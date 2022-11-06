@@ -73,3 +73,4 @@ E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\Peezy
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\PeezyMovies.pdb
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\PeezyMovies.genruntimeconfig.cache
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\ref\PeezyMovies.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\appsettings.Production.json
