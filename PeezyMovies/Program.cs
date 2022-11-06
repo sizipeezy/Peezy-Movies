@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using PeezyMovies.Infrastructure.Data;
 using PeezyMovies.Infrastructure.Data.Models;
 
@@ -32,6 +33,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddAplicationServices();
 
 var app = builder.Build();
 
