@@ -9,6 +9,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+
+
 builder.Services.AddDefaultIdentity<User>(options => 
 {
     options.SignIn.RequireConfirmedAccount = builder.Configuration.GetValue<bool>("Identity:RequireConfirmedAccount");
@@ -21,7 +23,15 @@ builder.Services.AddDefaultIdentity<User>(options =>
 
 })
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/User/Login";
+});
+
+
 builder.Services.AddControllersWithViews();
+
 
 var app = builder.Build();
 
