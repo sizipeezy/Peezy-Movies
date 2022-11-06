@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using PeezyMovies.Infrastructure.Data.Configuration;
     using PeezyMovies.Infrastructure.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<User>
@@ -9,6 +10,7 @@
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
         }
 
         public DbSet<Actor>  Actors { get; set; }
@@ -42,6 +44,11 @@
 
             builder.Entity<OrderItem>()
                 .HasKey(x => new { x.OrderId, x.MovieId });
+
+            builder.ApplyConfiguration(new GenreConfiguration());
+            builder.ApplyConfiguration(new CinemaConfiguration());
+            builder.ApplyConfiguration(new ActorConfiguration());
+            builder.ApplyConfiguration(new ProducersConfiguration());
 
             base.OnModelCreating(builder);
         }
