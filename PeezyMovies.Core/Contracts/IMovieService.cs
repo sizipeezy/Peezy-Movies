@@ -15,6 +15,7 @@
 
         Task<Movie> GetMovieAsync(int movieId);
 
+        Task EditMovieAsync(AddMovieViewModel model, int movieId);
         Task<IEnumerable<MovieViewModel>> GetLastThreeAsync();
 
         Task AddMovieToCollectionAsync(string userId, int movieId);

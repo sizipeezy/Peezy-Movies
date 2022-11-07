@@ -69,6 +69,8 @@
                 ImageUrl = movie.ImageUrl,
                 Rating = movie.Rating,
                 Title = movie.Title,
+                Price = movie.Price,
+                Description = movie.Description,
                 Cinemas = await movieService.GetCinemasAsync(),
                 Producers = await movieService.GetProducersAsync(),
                 Genres = await movieService.GetGenresAsync(),

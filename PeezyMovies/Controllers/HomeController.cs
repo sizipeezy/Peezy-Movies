@@ -6,7 +6,14 @@
 
     public class HomeController : Controller
     {
-        public IActionResult Index() => View();
+        public IActionResult Index()
+        {
+            if (User?.Identity.IsAuthenticated ?? false)
+            {
+                return this.RedirectToAction("Index", "Movies");
+            }
+            return View();
+        }
         
     
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

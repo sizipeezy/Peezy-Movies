@@ -215,5 +215,10 @@
                    Genre = m.Movie.Genre?.Name,
                });
         }
+
+        public Task EditMovieAsync(AddMovieViewModel model, int movieId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
