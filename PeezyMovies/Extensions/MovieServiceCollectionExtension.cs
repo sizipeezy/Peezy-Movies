@@ -1,5 +1,7 @@
 ﻿namespace Microsoft.Extensions.DependencyInjection
 {
+    using PeezyMovies.Core.Contracts;
+    using PeezyMovies.Core.Services;
     using PeezyMovies.Infrastructure.Data.Common;
 
     public static class MovieServiceCollectionExtension
@@ -8,6 +10,8 @@
         {
 
             services.AddScoped<IRepository, Repository>();
+            services.AddScoped<IMovieService, MovieService>();
+         
 
             return services;
         }
