@@ -11,6 +11,7 @@
 
             services.AddScoped<IRepository, Repository>();
             services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IActorService, ActorService>();
          
 
             return services;
