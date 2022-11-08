@@ -15,8 +15,8 @@
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Director's name must be between 5 and 50 chars.")]
         public string Director { get; set; }
 
-        [Required]
-        [Range(1, 500, ErrorMessage = "Enter a price between 1$ and 500$")]
+        [Required( ErrorMessage = "Enter price between 1$ and 500$")]
+   
         public decimal Price { get; set; }
         [Required]
         [Url]

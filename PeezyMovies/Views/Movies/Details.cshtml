@@ -41,7 +41,7 @@
                 <input asp-for="@Model.Rating" class="form-control" value="" />
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
-            <div class="mb-3">
+          @*  <div class="mb-3">
                 <label asp-for="@Model.GenreId" class="form-label">Genre</label>
                 <select asp-for="@Model.GenreId" class="form-control">
                     @foreach (var genre in Model.Genres)
@@ -70,7 +70,7 @@
                     }
                 </select>
                 <span asp-validation-for="ProducerId" class="text-danger"></span>
-            </div>
+            </div>*@
              <div class="col-md-12">
                     <div class="card-footer">
                         <p class="card-text">
@@ -79,7 +79,9 @@
                             </a>
                             <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))
                             </a>
-
+                            <a class="btn btn-success text-white" asp-controller="Movies" asp-action="Details" asp-route-id="@Model.Id">
+                                Save
+                            </a>
                         </p>
                     </div>
                 </div>

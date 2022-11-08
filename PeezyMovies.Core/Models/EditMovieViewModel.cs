@@ -12,18 +12,17 @@
 
         [Required]
         [StringLength(40, MinimumLength = 2, ErrorMessage = "Title must be between 2 and 40 chars.")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "Director's name must be between 5 and 50 chars.")]
-        public string Director { get; set; }
+        public string? Director { get; set; }
 
-        [Required]
-        [Range(1, 500, ErrorMessage = "Enter a price between 1$ and 500$")]
+        [Required(ErrorMessage = "Enter a price between 1$ and 500$")]
         public decimal Price { get; set; }
         [Required]
         [Url]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         [Required]
         //[Range(typeof(decimal), "0.0", "10.0", ConvertValueInInvariantCulture = true)]
@@ -32,7 +31,7 @@
 
         [Required]
         [MaxLength(200, ErrorMessage = "Enter a description with maximum 200 chars")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public IEnumerable<Actor> Actors { get; set; } = new List<Actor>();
 
