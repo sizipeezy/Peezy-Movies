@@ -57,6 +57,18 @@
             return cinemas;
         }
 
+        public AddCinemaViewModel GetById(int movieId)
+        {
+            return repo.All<Cinema>().Where(x => x.Id == movieId)
+              .Select(x => new AddCinemaViewModel
+              {
+                  Id = x.Id,
+                  Description = x.Description,
+                  Logo = x.Logo,
+                  Name = x.Name,
+              }).FirstOrDefault();
+        }
+
         public async Task UpdateCinemaAsync(AddCinemaViewModel model, int cinemaId)
         {
             var cinema = await repo.All<Cinema>().FirstOrDefaultAsync(x => x.Id == cinemaId);

@@ -17,5 +17,7 @@
         Task DeleteCinemaAsync(int cinemaId);
 
         Task UpdateCinemaAsync(AddCinemaViewModel model, int cinemaId);
+
+        AddCinemaViewModel GetById(int movieId);
     }
 }
