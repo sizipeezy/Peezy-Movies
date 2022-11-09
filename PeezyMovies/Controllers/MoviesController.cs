@@ -104,5 +104,18 @@
             await movieService.RemoveFromCollectionAsync(userId, movieId);
             return RedirectToAction(nameof(Mine));
         }
+
+        public async Task<IActionResult> Filter(string input)
+        {
+            var allMovies = await movieService.GetAllAsync();
+
+            if(!string.IsNullOrEmpty(input) || !string.IsNullOrWhiteSpace(input))
+            {
+                var filteredResults = allMovies.Where(x => x.Title.Contains(input)).ToList();
+                return this.View(nameof(All), filteredResults);
+            }
+
+            return this.View(nameof(All), allMovies);
+        }
     }
 }

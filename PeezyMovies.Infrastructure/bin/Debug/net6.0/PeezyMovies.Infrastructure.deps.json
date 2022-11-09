@@ -10,12 +10,15 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
-          "Microsoft.EntityFrameworkCore.Tools": "6.0.10"
+          "Microsoft.EntityFrameworkCore.Tools": "6.0.10",
+          "bootstrap": "5.2.2",
+          "popper.js": "1.16.1"
         },
         "runtime": {
           "PeezyMovies.Infrastructure.dll": {}
         }
       },
+      "bootstrap/5.2.2": {},
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -400,6 +403,7 @@
           }
         }
       },
+      "popper.js/1.16.1": {},
       "System.Collections.Immutable/6.0.0": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
@@ -547,6 +551,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "bootstrap/5.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-947NZilDSNJ8V9xUBnwFR22RsyznWzPelKYKVbT7qwDlRR5YunBoO8bSKbLkdfajiSc2LWatBU4fMHrjrF0oeA==",
+      "path": "bootstrap/5.2.2",
+      "hashPath": "bootstrap.5.2.2.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
@@ -785,6 +796,13 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "popper.js/1.16.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6GiVZho0vwBnId7pK7NLTjMGq4F0/VE65I08CCeKlarVoUt1w8SGTtJmhNo/0pK38EGUP/xbT4+OkWB8UTMPBw==",
+      "path": "popper.js/1.16.1",
+      "hashPath": "popper.js.1.16.1.nupkg.sha512"
     },
     "System.Collections.Immutable/6.0.0": {
       "type": "package",

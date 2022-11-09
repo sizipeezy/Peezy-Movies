@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="5.2.2" />
+    <PackageReference Include="popper.js" Version="1.16.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PeezyMovies.Infrastructure\PeezyMovies.Infrastructure.csproj" />
   </ItemGroup>
 
