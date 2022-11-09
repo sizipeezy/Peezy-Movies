@@ -23,6 +23,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/Actors/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/Actors/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -69,6 +73,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/Movies/Mine.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVzXE1pbmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/Producers/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/Producers/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/Producers/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/Producers/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/Shared/Error.cshtml]

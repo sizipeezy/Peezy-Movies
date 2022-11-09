@@ -13,6 +13,7 @@
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IActorService, ActorService>();
             services.AddScoped<ICinemaService, CinemaService>();
+            services.AddScoped<IProducerService, ProducerService>();
          
 
             return services;

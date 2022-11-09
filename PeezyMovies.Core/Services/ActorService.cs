@@ -30,6 +30,18 @@
             await repo.SaveChangesAsync();
         }
 
+        public async Task DeleteActorAsync(int actorId)
+        {
+            var actor = await repo.All<Actor>().FirstOrDefaultAsync(x => x.Id == actorId);
+            if (actor != null)
+            {
+                repo.Delete(actor);
+            }
+
+            await repo.SaveChangesAsync();
+        }
+
+
         public async Task EditActorDetailsAsync(AddActorViewModel model, int actorId)
         {
             var actor =await repo.All<Actor>().Where(x => x.Id == actorId).FirstOrDefaultAsync();

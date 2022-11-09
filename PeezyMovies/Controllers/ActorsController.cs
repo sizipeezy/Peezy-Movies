@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
+    using PeezyMovies.Core.Services;
 
     public class ActorsController : Controller
     {
@@ -41,11 +42,14 @@
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
         public IActionResult Details(int actorId)
         {
             var viewModel = actorService.GetById(actorId);
             return this.View(viewModel);
         }
+
+        [HttpPost]
         public async Task<IActionResult> Details(AddActorViewModel model, int actorId)
         {
             if (!ModelState.IsValid)
@@ -54,6 +58,25 @@
             }
 
             await actorService.EditActorDetailsAsync(model, actorId);
+            return this.RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var actor = actorService.GetById(id);
+            if (actor == null)
+            {
+                return View("NotFound");
+            }
+
+            await actorService.DeleteActorAsync(id);
             return this.RedirectToAction(nameof(Index));
         }
 
