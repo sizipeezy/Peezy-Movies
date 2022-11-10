@@ -12,6 +12,11 @@
         {
             this.cinemaService = cinemaService;
         }
+        public  IActionResult Details(int id)
+        {
+            var cinema = cinemaService.GetById(id);
+            return this.View(cinema);
+        }
 
         public async Task<IActionResult> Index()
         {
@@ -80,5 +85,6 @@
             await cinemaService.DeleteCinemaAsync(id);
             return this.RedirectToAction(nameof(Index));
         }
+       
     }
 }

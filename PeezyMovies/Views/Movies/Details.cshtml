@@ -1,98 +1,72 @@
-﻿@model EditMovieViewModel
+﻿@using PeezyMovies.Infrastructure.Data.Models
+@model Movie
 
 @{
     ViewData["Title"] = "Movie details";
 }
 
-
 <div class="row">
-    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-        <form method="post">
-            <div class="mb-3">
-                  <div class="form-group text-center">
-                        <img class="border-info rounded-pill" style="max-width: 350px" id="ImageUrlTest" />
-                    </div>
-                <label asp-for="@Model.Title" class="form-label">Title</label>
-                <input asp-for="@Model.Title" class="form-control" aria-required="true" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="@Model.Director" class="form-label">Director</label>
-                <input asp-for="@Model.Director" class="form-control" aria-required="true" />
-                <span asp-validation-for="Director" class="text-danger"></span>
-            </div>
-              <div class="mb-3">
-                <label asp-for="@Model.Description" class="form-label">Description</label>
-               <textarea asp-for="@Model.Description" class="form-control" aria-required="true"></textarea> 
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="@Model.Price" class="form-label">Price</label>
-                <input asp-for="@Model.Price" class="form-control" aria-required="true" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="@Model.ImageUrl" class="form-label">Image URL</label>
-                <input asp-for="@Model.ImageUrl" class="form-control" aria-required="true" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="@Model.Rating" class="form-label">Rating</label>
-                <input asp-for="@Model.Rating" class="form-control" value="" />
-                <span asp-validation-for="Rating" class="text-danger"></span>
-            </div>
-          @*  <div class="mb-3">
-                <label asp-for="@Model.GenreId" class="form-label">Genre</label>
-                <select asp-for="@Model.GenreId" class="form-control">
-                    @foreach (var genre in Model.Genres)
-                    {
-                       <option value="@genre.Id">@genre.Name</option>
-                    }
-                </select>
-                <span asp-validation-for="GenreId" class="text-danger"></span>
-            </div>
-             <div class="mb-3">
-                <label asp-for="@Model.CinemaId" class="form-label">Cinema</label>
-                <select asp-for="@Model.CinemaId" class="form-control">
-                    @foreach (var cinema in Model.Cinemas)
-                    {
-                        <option value="@cinema.Id">@cinema.Name</option>
-                    }
-                </select>
-                <span asp-validation-for="CinemaId" class="text-danger"></span>
-            </div>
-                <div class="mb-3">
-                <label asp-for="@Model.ProducerId" class="form-label">Producer</label>
-                <select asp-for="@Model.ProducerId" class="form-control">
-                    @foreach (var producer in Model.Producers)
-                    {
-                        <option value="@producer.Id">@producer.FullName</option>
-                    }
-                </select>
-                <span asp-validation-for="ProducerId" class="text-danger"></span>
-            </div>*@
-             <div class="col-md-12">
-                    <div class="card-footer">
+    <div class="col-md-8 offset-2">
+        <div class="card mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-info">
                         <p class="card-text">
-                            <a class="btn btn-outline-primary float-right" asp-action="All">
-                                Back to List
-                            </a>
-                            <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))
-                            </a>
-                            <a class="btn btn-success text-white" asp-controller="Movies" asp-action="Details" asp-route-id="@Model.Id">
-                                Save
-                            </a>
+                            <h2 class="card-title">
+                                @Model.Title
+                            </h2>
                         </p>
                     </div>
                 </div>
-        </form>
+                <div class="col-md-4">
+                    <img src="@Model.ImageUrl" width="100%" alt="@Model.Title">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Title</p>
+                     <h5 class="card-title">
+                          Genre: @Model.Genre.Name
+                     </h5>
+                        <p class="card-text">
+                            <b>Cinema: </b>
+                            <a asp-controller="Cinema" asp-action="Details" asp-route-id="@Model.CinemaId">
+                                @Model.Cinema.Name
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Producer: </b>
+                            <a asp-controller="Producers" asp-action="Details" asp-route-id="@Model.ProducerId">
+                                @Model.Producer.FullName
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Actors: </b>
+                            <hr />
+                            <div class="row">
+                                @foreach (var actor in Model.ActorsMovies)
+                                {
+                                   <div class="column text-center">
+                                       <img class="border-info rounded-circle" src="@actor.Actor.ImageUrl" style="max-width: 150px" />
+                                       <br />
+                                       <a asp-controller="Actors" asp-action="Details" asp-route-id="@actor.ActorId">@actor.Actor.FullName</a>
+                                   </div>
+                                }
+                            </div>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card-footer">
+                        <p class="card-text">
+                            <a class="btn btn-outline-primary float-right" asp-action="Index">
+                                Back to List
+                            </a>
+                            <a class="btn btn-success text-white"><i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-@section Scripts{
-<script>
-   $(document).ready(function () {
-           var output = document.getElementById('ImageUrlTest');
-       output.src = $("#ImageUrl").val();
-   })
-</script>
-}

@@ -13,7 +13,7 @@
 
         EditMovieViewModel GetById(int movieId);
 
-        Task<Movie> GetMovieAsync(int movieId);
+        Task<Movie> GetMovieByIdAsync(int movieId);
 
         Task EditMovieAsync(AddMovieViewModel model, int movieId);
         Task<IEnumerable<MovieViewModel>> GetLastThreeAsync();

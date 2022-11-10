@@ -17,6 +17,8 @@
 
         Producer GetById(int producerId);
 
+        Task<ProducerViewModel> GetByIdAsync(int producerId);
+
         Task<ProducerViewModel> GetProducerDetails(int producerId);
 
         Task EditProducerDetailAsync(AddProducerViewModel model, int producerId);

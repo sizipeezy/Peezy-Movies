@@ -22,22 +22,25 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="All"> Movies</a>
                         </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Add">Add Movie</a>
-                        </li>
-                         <li class="nav-item">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Add">Add Movie</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Mine">Watched</a>
                             </li>
-                       <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="badge-info bi-gear"></i> Management 
-                        </a>
-                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                 <a class="dropdown-item" asp-controller="Cinema" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
-                                 <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
-                                 <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
-                         </div>
-                       </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="badge-info bi-gear"></i> Management 
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-controller="Cinema" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
+                                    <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
+                                    <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
+                                </div>
+                            </li>
+                        }
                     </ul>
 
                       @*  @if (this.User?.Identity != null && this.User.Identity.IsAuthenticated)

@@ -71,6 +71,16 @@
            
         }
 
+        public Task<ProducerViewModel> GetByIdAsync(int producerId)
+        {
+            return this.repo.AllReadonly<Producer>().Select(x => new ProducerViewModel
+            {
+                FullName = x.FullName,
+                Id = x.Id,
+                ImageUrl = x.ImageUrl
+            }).FirstOrDefaultAsync();
+        }
+
         public async Task<ProducerViewModel> GetProducerDetails(int producerId)
         {
             var producer = await this.repo.All<Producer>()

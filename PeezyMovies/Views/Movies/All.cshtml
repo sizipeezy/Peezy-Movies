@@ -19,18 +19,18 @@
                     <p>Producer: @movie.Producer</p>
                     <p>Cinema: @movie.Cinema</p>
                 </div>
-
-                    <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="AddToCollection" method="post">
-                    <input type="submit" value="Mark as Watched" class="fs-6 btn btn-success mb-3 p-2" />
-                </form>
-
-                <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="Details" method="post">
-                     <input type="submit" value="Details" class="fs-6 btn btn-success mb-3 p-2" />
-                 </form>
-
-                     <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Orders" asp-action="AddItemToShoppingCart" method="post">
-                         <input type="submit" value="Add" class="fs-6 btn btn-success mb-3 p-2" />
-                     </form>
+                @if (User.Identity.IsAuthenticated)
+                {
+                   <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="AddToCollection" method="post">
+                   <input type="submit" value="Mark as Watched" class="fs-6 btn btn-success mb-3 p-2" />
+                   </form>
+                   <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="Details" method="post">
+                   <input type="submit" value="Details" class="fs-6 btn btn-success mb-3 p-2" />
+                   </form>
+                   <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Orders" asp-action="AddItemToShoppingCart" method="post">
+                   <input type="submit" value="Add To Cart" class="fs-6 btn btn-success mb-3 p-2" />
+                  </form>
+                }
             </div>
     }
 </div>

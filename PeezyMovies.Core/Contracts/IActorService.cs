@@ -12,6 +12,8 @@
 
         Actor GetById(int actorId);
 
+        Task<ActorViewModel> GetByIdAsync(int actorId);
+
         Task<ActorViewModel> GetActorDetails(int actorId);
 
         Task EditActorDetailsAsync(AddActorViewModel model, int actorId);

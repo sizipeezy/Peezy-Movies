@@ -80,6 +80,15 @@
             return repo.All<Actor>().FirstOrDefault(x => x.Id == actorId);
         }
 
-    
+        public Task<ActorViewModel> GetByIdAsync(int actorId)
+        {
+            return repo.AllReadonly<Actor>().Select(x => new ActorViewModel
+            {
+                Id = x.Id,
+                Bio = x.Bio,
+                FullName = x.FullName,
+                ImageUrl = x.ImageUrl,
+            }).FirstOrDefaultAsync();
+        }
     }
 }

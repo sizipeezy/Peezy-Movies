@@ -40,12 +40,21 @@
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Details(int actorId)
+        public async Task<IActionResult> Details(int id)
+        {
+            var viewModel = await producerService.GetByIdAsync(id);
+            return this.View(viewModel);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int actorId)
         {
             var viewModel = producerService.GetById(actorId);
             return this.View(viewModel);
         }
-        public async Task<IActionResult> Details(AddProducerViewModel model, int actorId)
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(AddProducerViewModel model, int actorId)
         {
             if (!ModelState.IsValid)
             {

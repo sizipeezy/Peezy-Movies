@@ -47,34 +47,11 @@
             return this.RedirectToAction(nameof(All));
         }
 
-        [HttpGet]
-        public IActionResult Details()
-        {
-            return this.View();
-        }
-
-        [HttpPost]
         public async Task<IActionResult> Details(int movieId)
         {
-            var movie = movieService.GetById(movieId);
+            var viewModel = await movieService.GetMovieByIdAsync(movieId);
+            return View(viewModel);
 
-            if(movie == null)
-            {
-                return this.View("NotFound");
-            }
-
-            return this.View(new EditMovieViewModel
-            {
-                Director = movie.Director,
-                ImageUrl = movie.ImageUrl,
-                Rating = movie.Rating,
-                Title = movie.Title,
-                Price = movie.Price,
-                Description = movie.Description,
-                Cinemas = await movieService.GetCinemasAsync(),
-                Producers = await movieService.GetProducersAsync(),
-                Genres = await movieService.GetGenresAsync(),
-            });
         }
         public async Task<IActionResult> Index()
         {

@@ -43,21 +43,21 @@
         }
 
         [HttpGet]
-        public IActionResult Details(int actorId)
+        public async Task<IActionResult> Details(int id)
         {
-            var viewModel = actorService.GetById(actorId);
+            var viewModel = await actorService.GetByIdAsync(id);
             return this.View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Details(AddActorViewModel model, int actorId)
+        public async Task<IActionResult> Details(AddActorViewModel model, int id)
         {
             if (!ModelState.IsValid)
             {
                 return this.View(model);
             }
 
-            await actorService.EditActorDetailsAsync(model, actorId);
+            await actorService.EditActorDetailsAsync(model, id);
             return this.RedirectToAction(nameof(Index));
         }
 

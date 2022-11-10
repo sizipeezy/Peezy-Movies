@@ -74,32 +74,7 @@
             });
         }
 
-        public EditMovieViewModel GetById(int movieId)
-        {
-            return repo.All<Movie>().Where(x => x.Id == movieId)
-              .Select(x => new EditMovieViewModel
-              {
-                  Id = x.Id,
-                  ImageUrl = x.ImageUrl,
-                  Director = x.Director,
-                  Rating = x.Rating,
-                  CinemaId = x.CinemaId,
-                  GenreId = x.GenreId,
-                  ProducerId = x.ProducerId,
-                  Title = x.Title,
-                  Description = x.Description,
-                  Price = x.Price,
-                  
-
-              }).FirstOrDefault();
-        }
-
-        public async Task<Movie> GetMovieAsync(int movieId)
-        {
-           return await repo.All<Movie>().Where(x => x.Id == movieId).FirstOrDefaultAsync();
-            
-        }
-
+     
         public async Task<IEnumerable<Cinema>> GetCinemasAsync()
         {
             return await repo.All<Cinema>().ToListAsync();
@@ -219,6 +194,34 @@
         public Task EditMovieAsync(AddMovieViewModel model, int movieId)
         {
             throw new NotImplementedException();
+        }
+
+        public EditMovieViewModel GetById(int movieId)
+        {
+            return this.repo.All<Movie>().Where(x => x.Id == movieId)
+                .Select(x => new EditMovieViewModel
+                {
+                    Id = x.Id,
+                    ImageUrl = x.ImageUrl,
+                    Director = x.Director,
+                    Rating = x.Rating,
+                    CinemaId = x.CinemaId,
+                    GenreId = x.GenreId,
+                    ProducerId = x.ProducerId,
+                    Title = x.Title
+                }).FirstOrDefault();
+        }
+
+        public async Task<Movie> GetMovieByIdAsync(int movieId)
+        {
+            var movieDetails = await repo.All<Movie>()
+                .Include(c => c.Genre)
+                .Include(c => c.Cinema)
+               .Include(p => p.Producer)
+               .Include(am => am.ActorsMovies).ThenInclude(a => a.Actor)
+               .FirstOrDefaultAsync(n => n.Id == movieId);
+
+            return movieDetails;
         }
     }
 }
