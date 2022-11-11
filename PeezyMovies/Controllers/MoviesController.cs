@@ -1,6 +1,7 @@
 ﻿namespace PeezyMovies.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
     using System.Security.Claims;
@@ -22,9 +23,12 @@
         [HttpGet]
         public async Task<IActionResult> Add()
         {
+            var movieDropDowns = await movieService.GetActorsDropDown();
+
+            ViewBag.Actors = new SelectList(movieDropDowns.Actors, "Id", "FullName");
+
             var viewModel = new AddMovieViewModel()
             {
-                Actors = await movieService.GetActors(),
                 Cinemas = await movieService.GetCinemasAsync(),
                 Genres = await movieService.GetGenresAsync(),
                 Producers = await movieService.GetProducersAsync(),
@@ -39,6 +43,8 @@
         {
             if (!ModelState.IsValid)
             {
+                var movieDropDowns = await movieService.GetActorsDropDown();
+                ViewBag.Actors = new SelectList(movieDropDowns.Actors, "Id", "FullName");
                 return this.View(model);
             }
 

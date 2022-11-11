@@ -21,7 +21,7 @@
 
         public async Task AddMovieAsync(AddMovieViewModel model)
         {
-            var movie = new Movie
+            var movie = new Movie()
             {
                 Title = model.Title,
                 Description = model.Description,
@@ -38,12 +38,12 @@
             await repo.AddAsync(movie);
             await repo.SaveChangesAsync();
 
-            foreach (var actor in repo.All<Actor>())
+            foreach (var actorId in model.ActorIds)
             {
                 var newActorMovie = new ActorMovie()
                 {
                     MovieId = movie.Id,
-                    ActorId = actor.Id,
+                    ActorId = actorId,
                 };
 
                 await repo.AddAsync(newActorMovie);
@@ -89,10 +89,6 @@
             return await repo.All<Producer>().ToListAsync();
         }
 
-        public async Task<IEnumerable<Actor>> GetActors()
-        {
-            return await repo.All<Actor>().ToListAsync();
-        }
 
         public async Task<IEnumerable<MovieViewModel>> GetLastThreeAsync()
         {
@@ -222,6 +218,16 @@
                .FirstOrDefaultAsync(n => n.Id == movieId);
 
             return movieDetails;
+        }
+
+        public async Task<ActorsDropDownViewModel> GetActorsDropDown()
+        {
+            var response = new ActorsDropDownViewModel()
+            {
+                Actors = await repo.All<Actor>().OrderBy(x => x.Id).ToListAsync(),
+            };
+
+            return response;
         }
     }
 }
