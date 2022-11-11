@@ -23,7 +23,7 @@
         public string ImageUrl { get; set; }
 
         [Required]
-        //[Range(typeof(decimal), "0.0", "10.0", ConvertValueInInvariantCulture = true)]
+        [Range(typeof(decimal), "0.0", "10.0", ConvertValueInInvariantCulture = true)]
         
         public decimal Rating { get; set; }
 

@@ -4,12 +4,12 @@
     using System.Collections.Generic;
 
 
-    public class ActorsDropDownViewModel
+    public class ActorsViewModel
     {
-        public ActorsDropDownViewModel()
+        public ActorsViewModel()
         {
             this.Actors = new List<Actor>();
         }
-        public List<Actor> Actors { get; set; } 
+        public List<Actor> Actors { get; set; }
     }
 }

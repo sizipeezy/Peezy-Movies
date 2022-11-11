@@ -29,6 +29,7 @@
 
             var viewModel = new AddMovieViewModel()
             {
+              
                 Cinemas = await movieService.GetCinemasAsync(),
                 Genres = await movieService.GetGenresAsync(),
                 Producers = await movieService.GetProducersAsync(),

@@ -220,14 +220,14 @@
             return movieDetails;
         }
 
-        public async Task<ActorsDropDownViewModel> GetActorsDropDown()
+        public async Task<ActorsViewModel> GetActorsDropDown()
         {
-            var response = new ActorsDropDownViewModel()
+            var actors = new ActorsViewModel()
             {
                 Actors = await repo.All<Actor>().OrderBy(x => x.Id).ToListAsync(),
             };
 
-            return response;
+            return actors;
         }
     }
 }

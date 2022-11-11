@@ -15,7 +15,7 @@
         [Display(Name = "Movie Title")]
         public string Name { get; set; }
         [Required]
-        [MaxLength(100, ErrorMessage = "Max length - 100 chars.")]
+        [StringLength(100, ErrorMessage = "Max length - 100 chars.", MinimumLength = 5)]
         public string Description { get; set; }
 
     }

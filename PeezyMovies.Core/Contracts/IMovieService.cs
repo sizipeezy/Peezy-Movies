@@ -30,6 +30,6 @@
 
         Task<IEnumerable<Cinema>> GetCinemasAsync();
 
-        Task<ActorsDropDownViewModel> GetActorsDropDown();
+        Task<ActorsViewModel> GetActorsDropDown();
     }
 }
