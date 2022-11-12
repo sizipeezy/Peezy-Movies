@@ -36,6 +36,21 @@
             return View(viewModel);
         }
 
+        public async Task<IActionResult> ProceedOrder()
+        {
+            var items = shoppingCart.GetShoppingCartItems();
+            shoppingCart.Items = items;
+
+            var viewModel = new ShoppingCartViewModel()
+            {
+                ShoppingCart = shoppingCart,
+                Total = shoppingCart.GetCartTotal(),
+            };
+
+           await shoppingCart.ClearCart();
+            return View(viewModel);
+        }
+
         public async Task<IActionResult> AddItemToShoppingCart(int movieId)
         {
             var item = await movieService.GetMovieByIdAsync(movieId);
@@ -57,16 +72,5 @@
             return RedirectToAction(nameof(ShoppingCart));
         }
 
-        public async Task<IActionResult> CompleteOrder()
-        {
-            var items = shoppingCart.GetShoppingCartItems();
-            var userId = string.Empty;
-            var email = string.Empty;
-
-            await orderService.StoreOrder(items, userId, email);
-            await shoppingCart.ClearCart();
-
-            return this.View();
-        }
     }
 }
