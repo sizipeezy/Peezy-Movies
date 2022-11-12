@@ -2,6 +2,7 @@
 {
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Services;
+    using PeezyMovies.Infrastructure.Data.Cart;
     using PeezyMovies.Infrastructure.Data.Common;
 
     public static class MovieServiceCollectionExtension
@@ -14,6 +15,10 @@
             services.AddScoped<IActorService, ActorService>();
             services.AddScoped<ICinemaService, CinemaService>();
             services.AddScoped<IProducerService, ProducerService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(s => ShoppingCart.GetShoppingCart(s));
+            services.AddSession();
          
 
             return services;

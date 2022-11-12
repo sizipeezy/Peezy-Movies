@@ -32,6 +32,8 @@
         public DbSet<OrderItem> OrdersItems { get; set; }
 
         public DbSet<UserMovie> UsersMovies { get; set; }
+
+        public DbSet<Item> Items { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<MovieCategories>()

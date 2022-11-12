@@ -53,15 +53,19 @@
                             </li>
                         }*@
                  
+
                     @if(this.User.Identity.IsAuthenticated)
                     {
-                           <form style="display:flex" class="form-inline my-2 my-lg-0" asp-controller="Movies" asp-action="Filter" style="padding-right: 25px;">
-                        <input name="input" type="text" class="form-control" placeholder="Search for a movie..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button  class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
-                    </form>
-
+                         <ul class="navbar-nav"> Items
+                            @await Component.InvokeAsync("ShoppingCartSummary")
+                       </ul>
+                         <form style="display:flex" class="form-inline my-2 my-lg-0" asp-controller="Movies" asp-action="Filter" style="padding-right: 25px;">
+                            <input name="input" type="text" class="form-control" placeholder="Search for a movie..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button  class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+                         </form>
+                         
                     }
-                  
+                
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -81,6 +85,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js" asp-append-version="true"></script>
+    
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap/dist/js/popper.min.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

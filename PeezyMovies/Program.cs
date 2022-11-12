@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PeezyMovies.Infrastructure.Data;
+using PeezyMovies.Infrastructure.Data.Cart;
 using PeezyMovies.Infrastructure.Data.Models;
 using PeezyMovies.ModelBinders;
+using Microsoft.AspNetCore.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -38,6 +40,7 @@ builder.Services.AddControllersWithViews().AddMvcOptions(options =>
     options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
 });
 
+
 builder.Services.AddAplicationServices();
 
 var app = builder.Build();
@@ -56,6 +59,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -381,6 +381,30 @@ namespace PeezyMovies.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("PeezyMovies.Infrastructure.Data.Models.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int?>("MovieId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ShoppingCartId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("Items");
+                });
+
             modelBuilder.Entity("PeezyMovies.Infrastructure.Data.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
@@ -690,6 +714,15 @@ namespace PeezyMovies.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Actor");
+
+                    b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("PeezyMovies.Infrastructure.Data.Models.Item", b =>
+                {
+                    b.HasOne("PeezyMovies.Infrastructure.Data.Models.Movie", "Movie")
+                        .WithMany()
+                        .HasForeignKey("MovieId");
 
                     b.Navigation("Movie");
                 });
