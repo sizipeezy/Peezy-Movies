@@ -13,6 +13,8 @@
 
         }
 
+        public DbSet<Contact> Contacts { get; set; }
+
         public DbSet<Actor>  Actors { get; set; }
 
         public DbSet<ActorMovie> ActorsMovies { get; set; }

@@ -3,7 +3,6 @@
     using PeezyMovies.Infrastructure.Data.Models;
     using System.Collections.Generic;
 
-
     public class ActorViewModel
     {
         public int Id { get; set; }

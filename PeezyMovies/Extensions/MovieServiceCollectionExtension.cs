@@ -16,6 +16,7 @@
             services.AddScoped<ICinemaService, CinemaService>();
             services.AddScoped<IProducerService, ProducerService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IContactService, ContactService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(s => ShoppingCart.GetShoppingCart(s));

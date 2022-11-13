@@ -3,7 +3,6 @@
     using System.ComponentModel.DataAnnotations;
     using System.Xml.Linq;
 
-
     public class AddActorViewModel
     {
         public int Id { get; set; }
