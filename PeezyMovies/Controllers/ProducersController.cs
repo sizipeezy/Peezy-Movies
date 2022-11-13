@@ -1,10 +1,12 @@
 ﻿namespace PeezyMovies.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Core.Services;
 
+    [Authorize(Roles = "Admin")]
     public class ProducersController : Controller
     {
         private readonly IProducerService producerService;
@@ -14,6 +16,7 @@
             this.producerService = producerService;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var viewModel = await producerService.GetAllAsync();
@@ -40,6 +43,7 @@
             return RedirectToAction(nameof(Index));
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var viewModel = await producerService.GetByIdAsync(id);

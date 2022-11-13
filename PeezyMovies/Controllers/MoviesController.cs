@@ -1,11 +1,14 @@
 ﻿namespace PeezyMovies.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
+    using PeezyMovies.Infrastructure.Data.Models;
     using System.Security.Claims;
 
+    [Authorize]
     public class MoviesController : Controller
     {
         private readonly IMovieService movieService;
@@ -14,6 +17,8 @@
         {
             this.movieService = movieService;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> All()
         {
             var viewModel = await movieService.GetAllAsync();
@@ -21,6 +26,7 @@
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add()
         {
             var movieDropDowns = await movieService.GetActorsDropDown();
@@ -40,6 +46,7 @@
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add(AddMovieViewModel model)
         {
             if (!ModelState.IsValid)
@@ -60,6 +67,8 @@
             return View(viewModel);
 
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var viewModel = await movieService.GetLastThreeAsync();
@@ -101,5 +110,6 @@
 
             return this.View(nameof(All), allMovies);
         }
+    
     }
 }

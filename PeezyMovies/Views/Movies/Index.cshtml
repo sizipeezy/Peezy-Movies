@@ -9,7 +9,7 @@
 @if (Model.Count() == 0)
 {
         <div class="mt-4 p-5 bg-light">
-            <h1 class="display-4">Welcome to the best place for renting houses!</h1>
+            <h1 class="display-4">Welcome to the best site for movies!</h1>
             <p class="lead">
                 There are no houses in the system currently available
                 so why don't you just add one?
@@ -18,8 +18,8 @@
             <p class="lead">
             @if (this.User?.Identity != null && this.User.Identity.IsAuthenticated)
             {
-                        <a asp-controller="Houses" asp-action="Add" class="btn btn-primary btn-lg"
-                    role="button">Add House</a>
+                        <a asp-controller="Movies" asp-action="Add" class="btn btn-primary btn-lg"
+                    role="button">Add Movie</a>
             }
             </p>
         </div>
@@ -29,16 +29,16 @@
 
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        @foreach (var house in Model)
+        @foreach (var movie in Model)
         {
                 <div class="carousel-item @(first ? "active" : string.Empty)">
 
                     <img class="d-block w-100" style="height:500px"
-                    src="@house.ImageUrl" alt="@house.Title">
+                    src="@movie.ImageUrl" alt="@movie.Title">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>
-                            <a class="btn btn-primary" asp-controller="Houses" asp-action="Details"
-                            asp-route-id="@house.Id"> @house.Title</a>
+                            <a class="btn btn-primary" asp-controller="Movies" asp-action="All"
+                            > @movie.Title</a>
                         </h5>
                     </div>
                 </div>
