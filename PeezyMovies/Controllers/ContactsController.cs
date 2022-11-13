@@ -5,7 +5,9 @@
     using PeezyMovies.Core.Models;
     using System.Net.Mail;
     using System.Net;
+    using Microsoft.AspNetCore.Authorization;
 
+    [Authorize]
     public class ContactsController : Controller
     {
         private readonly IContactService contactService;
@@ -15,6 +17,7 @@
             this.contactService = contactService;
         }
 
+        [AllowAnonymous]
         public IActionResult Contact()
         {
 
@@ -58,12 +61,13 @@
             return this.RedirectToAction(nameof(ThankYou));
         }
 
+        
         public IActionResult ThankYou()
         {
-            if (this.TempData[RedirectedFromContactForm] == null)
-            {
-                return this.NotFound();
-            }
+            //if (this.TempData[RedirectedFromContactForm] == null)
+            //{
+            //    return this.NotFound();
+            //}
             return this.View();
         }
     }
