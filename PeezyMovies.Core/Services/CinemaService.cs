@@ -69,6 +69,17 @@
               }).FirstOrDefault();
         }
 
+        public Task<CinemaViewModel> GetByIdAsync(int cinemaId)
+        {
+            return repo.All<Cinema>().Select(x => new CinemaViewModel
+            {
+                Id = x.Id,
+                Description =x.Description,
+                Logo = x.Logo,
+                Name = x.Name 
+            }).FirstOrDefaultAsync(x => x.Id == cinemaId);
+        }
+
         public async Task UpdateCinemaAsync(AddCinemaViewModel model, int cinemaId)
         {
             var cinema = await repo.All<Cinema>().FirstOrDefaultAsync(x => x.Id == cinemaId);

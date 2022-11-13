@@ -1,12 +1,13 @@
 ﻿namespace PeezyMovies.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Core.Services;
     using PeezyMovies.Infrastructure.Data.Cart;
 
-
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly IMovieService movieService;

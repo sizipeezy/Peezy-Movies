@@ -1,6 +1,7 @@
 ﻿namespace PeezyMovies.Core.Contracts
 {
     using PeezyMovies.Core.Models;
+    using PeezyMovies.Infrastructure.Data.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -19,5 +20,7 @@
         Task UpdateCinemaAsync(AddCinemaViewModel model, int cinemaId);
 
         AddCinemaViewModel GetById(int movieId);
+
+        Task<CinemaViewModel> GetByIdAsync(int cinemaId);
     }
 }

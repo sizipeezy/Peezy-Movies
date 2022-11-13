@@ -1,9 +1,11 @@
 ﻿namespace PeezyMovies.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
 
+    [Authorize(Roles = "Admin")]
     public class CinemaController : Controller
     {
         private readonly ICinemaService cinemaService;
@@ -12,12 +14,17 @@
         {
             this.cinemaService = cinemaService;
         }
-        public  IActionResult Details(int id)
+
+
+        [AllowAnonymous]
+        public  async Task<IActionResult> Details(int id)
         {
-            var cinema = cinemaService.GetById(id);
+            var cinema = await cinemaService.GetByIdAsync(id);
             return this.View(cinema);
         }
 
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var viewModel = await cinemaService.GetAllAsync();
