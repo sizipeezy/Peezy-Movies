@@ -22,12 +22,12 @@
                 @foreach (var item in Model)
                 { 
                     <tr>
-                            <td class="align-middle">
-                                <img class="rounded-circle" src="@item.ImageUrl" alt="@item.FullName" style="max-width: 150px" />
-                            </td>
-                            <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.FullName)
-                            </td>
+                     <td class="align-middle">
+                         <img class="rounded-circle" src="@item.ImageUrl" alt="@item.FullName" style="max-width: 150px" />
+                     </td>
+                     <td class="align-middle">
+                     @Html.DisplayFor(modelItem => item.FullName)
+                     </td>
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <td class="align-middle">
