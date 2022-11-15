@@ -21,7 +21,7 @@
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(s => ShoppingCart.GetShoppingCart(s));
             services.AddSession();
-         
+            
 
             return services;
         }

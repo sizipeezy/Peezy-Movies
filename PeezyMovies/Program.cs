@@ -7,6 +7,7 @@ using PeezyMovies.Infrastructure.Data.Cart;
 using PeezyMovies.Infrastructure.Data.Models;
 using PeezyMovies.ModelBinders;
 using Microsoft.AspNetCore.Http;
+using PeezyMovies.Infrastructure.Data.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -27,6 +28,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
     options.Password.RequireUppercase = builder.Configuration.GetValue<bool>("Identity:RequireUppercase");
 
 })
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.ConfigureApplicationCookie(options =>
@@ -44,6 +46,8 @@ builder.Services.AddControllersWithViews().AddMvcOptions(options =>
 builder.Services.AddAplicationServices();
 
 var app = builder.Build();
+
+AdminConfiguration.SeedAdmin(app);
 
 if (app.Environment.IsDevelopment())
 {
@@ -71,3 +75,4 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
+
