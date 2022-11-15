@@ -43,6 +43,18 @@
             await repo.SaveChangesAsync();
         }
 
+        public AddProducerViewModel EditById(int producerId)
+        {
+            return repo.All<Producer>()
+                .Where(x => x.Id == producerId)
+                .Select(x => new AddProducerViewModel
+                {
+                    Id = x.Id,
+                    FullName = x.FullName,
+                    ImageUrl = x.ImageUrl,
+                }).FirstOrDefault();
+        }
+
         public async Task EditProducerDetailAsync(AddProducerViewModel model, int producerId)
         {
             var producer = await repo.AllReadonly<Producer>().FirstOrDefaultAsync(x => x.Id == producerId);
@@ -50,6 +62,8 @@
             producer.FullName = model.FullName;
             producer.ImageUrl = model.ImageUrl;
 
+
+            repo.Update(producer);
             await repo.SaveChangesAsync();
         }
 
@@ -73,7 +87,9 @@
 
         public Task<ProducerViewModel> GetByIdAsync(int producerId)
         {
-            return this.repo.AllReadonly<Producer>().Select(x => new ProducerViewModel
+            return this.repo.All<Producer>()
+                .Where(x => x.Id == producerId)
+                .Select(x => new ProducerViewModel
             {
                 FullName = x.FullName,
                 Id = x.Id,

@@ -54,6 +54,7 @@
             builder.ApplyConfiguration(new ActorConfiguration());
             builder.ApplyConfiguration(new ProducersConfiguration());
 
+
             base.OnModelCreating(builder);
         }
     }
