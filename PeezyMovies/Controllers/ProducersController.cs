@@ -56,6 +56,7 @@
             var viewModel = producerService.GetById(actorId);
             return this.View(viewModel);
         }
+         
 
         [HttpPost]
         public async Task<IActionResult> Edit(AddProducerViewModel model, int actorId)
