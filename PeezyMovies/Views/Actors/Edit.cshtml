@@ -12,29 +12,34 @@
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
-                    <div class="form-group text-center">
-                        <img class="border-info rounded-circle" style="max-width: 150px" id="ImageUrlPreview" />
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="ImageUrl" class="control-label"></label>
-                        <input asp-for="ImageUrl" class="form-control" readonly />
-                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="FullName" class="control-label"></label>
-                        <input asp-for="FullName" class="form-control" readonly />
-                        <span asp-validation-for="FullName" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Bio" class="control-label"></label>
-                        <input asp-for="Bio" class="form-control" readonly />
-                        <span asp-validation-for="Bio" class="text-danger"></span>
-                    </div>
+                <form asp-controller="Actors" asp-action="Edit" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                    <div class="form-group">
-                        <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
-                    </div>
+                   <div class="form-group text-center">
+                    <img class="border-info rounded-circle" style="max-width: 150px" id="ImageUrlPreview" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImageUrl" class="control-label"></label>
+                    <input asp-for="ImageUrl" class="form-control" />
+                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-label"></label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                     <label asp-for="Bio" class="control-label"></label>
+                     <input asp-for="Bio" class="form-control" />
+                     <span asp-validation-for="Bio" class="text-danger"></span>
+                 </div>
+
+                <div class="form-group">
+
+                    <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                    <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                </div>
+                </form>
             </div>
         </div>
     </div>

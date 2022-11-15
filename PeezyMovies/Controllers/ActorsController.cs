@@ -44,6 +44,8 @@
             return RedirectToAction(nameof(Index));
         }
 
+      
+
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
@@ -52,16 +54,16 @@
         }
 
 
-        [HttpGet]
-        public IActionResult Delete()
-        {
-            return this.View();
-        }
+        //[HttpGet]
+        //public IActionResult Delete()
+        //{
+        //    return this.View();
+        //}
 
-        [HttpPost]
+        //[HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var actor = actorService.GetById(id);
+            var actor =await actorService.GetByIdAsync(id);
             if (actor == null)
             {
                 return View("NotFound");
@@ -72,9 +74,9 @@
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var viewModel = actorService.GetById(id);
+            var viewModel = await actorService.ActorById(id);
 
             return this.View(viewModel);
         }

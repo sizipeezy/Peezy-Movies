@@ -17,6 +17,19 @@
             this.repo = repo;
         }
 
+        public Task<AddActorViewModel> ActorById(int actorId)
+        {
+            return repo.All<Actor>()
+               .Where(x => x.Id == actorId)
+               .Select(x => new AddActorViewModel
+               {
+                   Id = x.Id,
+                   Bio = x.Bio,
+                   FullName = x.FullName,
+                   ImageUrl = x.ImageUrl,
+               }).FirstOrDefaultAsync();
+        }
+
         public async Task AddActorAsync(AddActorViewModel model)
         {
             var actor = new Actor()
@@ -82,7 +95,9 @@
 
         public Task<ActorViewModel> GetByIdAsync(int actorId)
         {
-            return repo.AllReadonly<Actor>().Select(x => new ActorViewModel
+            return repo.All<Actor>()
+                .Where(x => x.Id == actorId)
+                .Select(x => new ActorViewModel
             {
                 Id = x.Id,
                 Bio = x.Bio,
