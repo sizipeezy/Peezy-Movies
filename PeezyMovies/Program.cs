@@ -59,6 +59,7 @@ else
     app.UseHsts();
 }
 
+app.UseStatusCodePagesWithRedirects("/Home/NotFound?statusCode={0}"); // Midleware for missing page
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

@@ -1,7 +1,34 @@
-﻿<div class="row">
-    <div class="col-md-6 offset-3">
-        <h1 class="text-info">You've reached the end of the internet</h1>
-        <hr />
-        <a class="btn btn-outline-success" asp-controller="Movies" asp-action="Index">Home Page</a>
+﻿@model HttpErrorViewModel
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="text-center">
+            <h1>Page not found: @Model.StatusCode</h1>
+        </div>
+
+        <div class="text-right">
+            <div class="btn-group">
+                <span style="padding:5px">
+                     We are sorry, the page you requested could not be found. Please go back to the homepage or use the contact form.
+                </span>
+                <br />
+              
+            </div>
+        </div>
+          <div class="row">
+                <span>
+                     Thank your for your understanding!
+                </span>
+                </div>
+          <div class="text-right">
+            <div class="btn-group">
+                <a class="btn btn-outline-success" asp-controller="Movies" asp-action="All">
+                    Home
+                </a>
+                 <a class="btn btn-outline-primary" asp-controller="Contacts" asp-action="Contact">
+                   Contact
+                </a>
+            </div>
+        </div>
     </div>
 </div>

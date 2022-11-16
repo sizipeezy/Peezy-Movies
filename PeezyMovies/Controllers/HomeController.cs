@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
+    using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
     using PeezyMovies.Models;
@@ -9,12 +10,10 @@
 
     public class HomeController : Controller
     {
-        private readonly IActorService actorService;
         private readonly IRepository repo;
 
-        public HomeController(IActorService actorService, IRepository repo)
+        public HomeController(IRepository repo)
         {
-            this.actorService = actorService;
             this.repo = repo;
         }
 
@@ -36,8 +35,23 @@
             }
             return View();
         }
-        
-    
+
+       public IActionResult NotFound(int statusCode)
+       {
+            var viewModel = new HttpErrorViewModel
+            {
+                StatusCode = statusCode,
+            };
+
+            if (statusCode == 404)
+            {
+                return this.View(viewModel);
+            }
+
+            return this.View(
+                "Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
