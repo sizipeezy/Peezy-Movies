@@ -1,5 +1,11 @@
 ﻿@model ContactFormViewModel
-<h3>Contact form</h3>
+@{
+    ViewBag.Title = "Contact Form";
+}
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr/>
+
+
 @using (Html.BeginForm("SendMail", "Contacts"))
 {
     <div class="has-error" col-md-12>

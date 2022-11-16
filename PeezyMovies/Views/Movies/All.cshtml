@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<MovieViewModel>
 
 @{
-    ViewBag.Title = "Watchlist";
+    ViewBag.Title = "Movies";
 }
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr/>
 
 <div class="text-center row">
     @foreach (var movie in Model)

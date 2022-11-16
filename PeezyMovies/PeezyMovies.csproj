@@ -21,4 +21,8 @@
     <ProjectReference Include="..\PeezyMovies.Core\PeezyMovies.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
 </Project>
