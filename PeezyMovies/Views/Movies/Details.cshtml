@@ -62,7 +62,9 @@
                             <a class="btn btn-outline-primary float-right" asp-action="All">
                                 Back to List
                             </a>
-                            <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))</a>
+                            <form class="input-group-sm" asp-route-movieId="@Model.Id" asp-controller="Orders" asp-action="AddItemToShoppingCart" method="post">
+                             <input type="submit" value="Add to Cart (Price @Model.Price.ToString("c"))" class="fs-6 btn btn-success mb-3 p-2" />
+                             </form>
                             
                         </p>
                     </div>
