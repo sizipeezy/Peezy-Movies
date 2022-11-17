@@ -7,6 +7,7 @@
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Models;
     using System.Security.Claims;
+    using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
     [Authorize]
     public class MoviesController : Controller
@@ -19,11 +20,13 @@
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> All([FromQuery]AllMoviesViewModel model)
         {
-            var viewModel = await movieService.GetAllAsync();
+            var viewModel = this.movieService.All(model);
+            viewModel.Genres = this.movieService.GenresNamesAsStrings();
             return this.View(viewModel);
         }
+
 
         [HttpGet]
         [Authorize(Roles = "Admin")]

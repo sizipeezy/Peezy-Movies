@@ -230,6 +230,61 @@
             return actors;
         }
 
-    
+        public AllMoviesViewModel All(AllMoviesViewModel model)
+        {
+            var query =  repo.All<Movie>().AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(model.Genre))
+            {
+                query = query.Where(x => x.Genre.Name == model.Genre);
+            }
+
+            query = model.Sorting switch
+            {
+                MovieSorting.Price => query.OrderByDescending(c => c.Price),
+                MovieSorting.Genre => query.OrderBy(c => c.Genre.Name),
+                MovieSorting.Rating or _ => query.OrderByDescending(c => c.Id)
+            };
+
+            var movies = query
+                .Skip((model.CurrentPage - 1) * model.MoviesPerPage)
+                .Take(model.MoviesPerPage)
+                .Include(x => x.Genre)
+                .Include(x => x.Producer)
+                .Include(x => x.Cinema)
+                .Select(x => new MovieViewModel
+                {
+                    Cinema = x.Cinema.Name,
+                    Genre = x.Genre.Name,
+                    Producer = x.Producer.FullName,
+                    Director = x.Director,
+                    Id = x.Id,
+                    Description = x.Description,
+                    Price = x.Price,
+                    Rating = x.Rating,
+                    ImageUrl = x.ImageUrl,
+                    Title = x.Title,
+
+                })
+                .ToList();
+
+
+            return new AllMoviesViewModel()
+            {
+                Movies = movies,
+                CurrentPage = model.CurrentPage,
+                 MoviesPerPage = model.MoviesPerPage,
+                 Sorting = model.Sorting,
+                Genre = model.Genre,
+                TotalCount = query.Count()
+            };
+        }
+
+        public IEnumerable<string> GenresNamesAsStrings()
+        {
+            return repo.All<Genre>().Select(x => x.Name)
+                .Distinct()
+                .ToList();
+        }
     }
 }

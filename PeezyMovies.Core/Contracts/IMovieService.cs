@@ -11,6 +11,10 @@
 
          Task AddMovieAsync(AddMovieViewModel model);
 
+        AllMoviesViewModel All(AllMoviesViewModel model);
+
+        IEnumerable<string> GenresNamesAsStrings();
+
         EditMovieViewModel GetById(int movieId);
 
         Task<Movie> GetMovieByIdAsync(int movieId);

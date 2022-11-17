@@ -1,4 +1,122 @@
-﻿@model IEnumerable<MovieViewModel>
+﻿@model AllMoviesViewModel
+@{
+    ViewBag.Title = "Movies";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+
+<form method="get">
+    <div class="row">
+        <div class="form-group col-md-3 d-flex justify-content-between">
+            <div class="form-group">
+                <label asp-for="Genre"></label>
+                <select asp-for="Genre" class="form-control">
+                    <option value="">All</option>
+                    @foreach (var genre in Model.Genres)
+                    {
+                                        <option value="@genre">@genre</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
+
+        <div class="form-group col-md-3 d-flex">
+            <div class="form-group">
+                <label asp-for="Sorting"></label>
+                <select asp-for="Sorting" class="form-control">
+                    <option value="0">Rating</option>
+                    <option value="1">Price</option>
+                    <option value="2">Genre</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group mt-4 p-2">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@{
+    var previousPage = Model.CurrentPage - 1;
+    if (previousPage < 1)
+    {
+        previousPage = 1;
+    }
+
+    var maxPage = Math.Ceiling((double)Model.TotalCount /
+        AllMoviesViewModel.moviesPerPage);
+}
+
+<div class="row mb-5">
+    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+           asp-controller="Movies"
+           asp-action="AllTest"
+           asp-route-currentPage="@previousPage"
+           asp-route-genre="@Model.Genre"
+           asp-route-sorting="@((int)Model.Sorting)"><<</a>
+    </div>
+
+    @{
+        var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
+        !Model.Movies.Any();
+    }
+
+    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-primary 
+           @(shouldButtonBeDisabled ? "disabled" : string.Empty)"
+           asp-controller="Movies"
+           asp-action="AllTest"
+           asp-route-currentPage="@(Model.CurrentPage + 1)"
+           asp-route-category="@Model.Genre"
+           asp-route-sorting="@((int)Model.Sorting)">>></a>
+    </div>
+</div>
+
+@if (!Model.Movies.Any())
+{
+            <h2 class="text-center">No houses found by the given criteria!</h2>
+}
+
+<div class="text-center row">
+    @foreach (var movie in Model.Movies)
+    {
+           <div class="card col-4" style="width: 20rem;">
+               <img class="card-img-top" style="width: 18rem;"
+        src="@movie.ImageUrl" alt="Book Image">
+               <div class="card-body">
+
+                   <h5 class="card-title mt-1">@movie.Title</h5>
+                   <p class="mb-0">Director: @movie.Director</p>
+                   <p class="mb-0">Rating: @movie.Rating</p>
+                   <p>Genre: @movie.Genre</p>
+                   <p>Producer: @movie.Producer</p>
+                   <p>Cinema: @movie.Cinema</p>
+               </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                      <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="AddToCollection" method="post">
+                      <input type="submit" value="Mark as Watched" class="fs-6 btn btn-success mb-3 p-2" />
+                      </form>
+                      <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="Details" method="post">
+                      <input type="submit" value="Details" class="fs-6 btn btn-success mb-3 p-2" />
+                      </form>
+                      <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Orders" asp-action="AddItemToShoppingCart" method="post">
+                      <input type="submit" value="Add To Cart" class="fs-6 btn btn-success mb-3 p-2" />
+                     </form>
+            }
+           </div>
+    }
+</div>
+
+@*@model IEnumerable<MovieViewModel>
 
 @{
     ViewBag.Title = "Movies";
@@ -6,7 +124,9 @@
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr/>
 
-<div class="text-center row">
+*@
+
+@*<div class="text-center row">
     @foreach (var movie in Model)
     {
        <div class="card col-4" style="width: 20rem;">
@@ -35,4 +155,4 @@
            }
        </div>
     }
-</div>
+</div>*@
