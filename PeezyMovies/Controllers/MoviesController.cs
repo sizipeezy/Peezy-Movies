@@ -28,6 +28,7 @@
         }
 
 
+
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add()
@@ -101,17 +102,18 @@
             return RedirectToAction(nameof(Mine));
         }
 
-        public async Task<IActionResult> Filter(string input)
+        public async Task<IActionResult> Filter(string input, AllMoviesViewModel model)
         {
             var allMovies = await movieService.GetAllAsync();
 
             if(!string.IsNullOrEmpty(input) || !string.IsNullOrWhiteSpace(input))
             {
                 var filteredResults = allMovies.Where(x => x.Title.Contains(input)).ToList();
-                return this.View(nameof(All), filteredResults);
+                return this.View(filteredResults);
             }
 
-            return this.View(nameof(All), allMovies);
+            model.Genres = movieService.GenresNamesAsStrings();
+            return this.RedirectToAction(nameof(All), model);
         }
     
     }
