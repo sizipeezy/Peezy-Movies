@@ -31,11 +31,20 @@ builder.Services.AddDefaultIdentity<User>(options =>
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/User/Login";
+   
 });
 
+builder.Services.AddAuthentication()
+    .AddFacebook(options =>
+    {
+        options.AppId = "445838051067773";
+        options.AppSecret = "5ae2ba0bcbb4de4c83260751978a29ed";
+    });
 
 builder.Services.AddControllersWithViews().AddMvcOptions(options =>
 {

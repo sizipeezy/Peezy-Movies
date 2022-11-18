@@ -8,6 +8,7 @@ E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\Peezy
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\PeezyMovies.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\PeezyMovies.pdb
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Humanizer.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
@@ -33,9 +34,13 @@ E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\Peezy
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.Owin.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.Owin.Security.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.Owin.Security.Facebook.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Newtonsoft.Json.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Owin.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\System.Drawing.Common.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

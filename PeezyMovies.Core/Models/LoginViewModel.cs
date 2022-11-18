@@ -1,5 +1,6 @@
 ﻿namespace PeezyMovies.Core.Models
 {
+    using Microsoft.AspNetCore.Authentication;
     using System.ComponentModel.DataAnnotations;
 
     public class LoginViewModel
@@ -10,5 +11,7 @@
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; } = null!;
+
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
     }
 }
