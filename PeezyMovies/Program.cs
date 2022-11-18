@@ -27,6 +27,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
     options.Password.RequireNonAlphanumeric = builder.Configuration.GetValue<bool>("Identity:RequireNonAlphanumeric");
     options.Password.RequireUppercase = builder.Configuration.GetValue<bool>("Identity:RequireUppercase");
 
+
 })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -42,8 +43,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 builder.Services.AddAuthentication()
     .AddFacebook(options =>
     {
-        options.AppId = "445838051067773";
-        options.AppSecret = "5ae2ba0bcbb4de4c83260751978a29ed";
+        options.AppId = builder.Configuration.GetValue<string>("Identity:AppId");
+        options.AppSecret = builder.Configuration.GetValue<string>("Identity:AppSecret");
     });
 
 builder.Services.AddControllersWithViews().AddMvcOptions(options =>
