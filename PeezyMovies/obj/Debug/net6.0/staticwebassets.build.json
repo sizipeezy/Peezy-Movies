@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Gt/OuEru31nvU4YEtyOXA2EzjPz8G5UiyZNtMVCUIyI=",
+  "Hash": "g+4hPMDAGF8UloCO2IfuqJzPgN3U/iYARGYVwxfDrZ0=",
   "Source": "PeezyMovies",
   "BasePath": "_content/PeezyMovies",
   "Mode": "Default",
@@ -1817,6 +1817,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "E:\\C# Asp.Net Books\\ASP.NET 6 Web Advanced\\ASP.NET MVC Project\\PeezyMovies\\PeezyMovies\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\PeezyMovies.bundle.scp.css"
+    },
+    {
+      "Identity": "E:\\C# Asp.Net Books\\ASP.NET 6 Web Advanced\\ASP.NET MVC Project\\PeezyMovies\\PeezyMovies\\wwwroot\\css\\bootswatchTheme.css",
+      "SourceId": "PeezyMovies",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\C# Asp.Net Books\\ASP.NET 6 Web Advanced\\ASP.NET MVC Project\\PeezyMovies\\PeezyMovies\\wwwroot\\",
+      "BasePath": "_content/PeezyMovies",
+      "RelativePath": "css/bootswatchTheme.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootswatchTheme.css"
     },
     {
       "Identity": "E:\\C# Asp.Net Books\\ASP.NET 6 Web Advanced\\ASP.NET MVC Project\\PeezyMovies\\PeezyMovies\\wwwroot\\css\\site.css",
