@@ -1,5 +1,6 @@
 ﻿namespace PeezyMovies.Core.Models
 {
+    using Ganss.Xss;
     using System.ComponentModel.DataAnnotations;
 
     public class ContactFormViewModel
@@ -21,5 +22,7 @@
         [StringLength(10000, ErrorMessage = "Message must be at least {2} symbols.", MinimumLength = 20)]
         [Display(Name = "Message description")]
         public string Content { get; set; }
+
+        public string SanitezedContect => new HtmlSanitizer().Sanitize(Content);    
     }
 }

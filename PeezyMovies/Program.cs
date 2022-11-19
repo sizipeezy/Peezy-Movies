@@ -8,6 +8,7 @@ using PeezyMovies.Infrastructure.Data.Models;
 using PeezyMovies.ModelBinders;
 using Microsoft.AspNetCore.Http;
 using PeezyMovies.Infrastructure.Data.Configuration;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -47,13 +48,18 @@ builder.Services.AddAuthentication()
         options.AppSecret = builder.Configuration.GetValue<string>("Facebook:AppSecret");
     });
 
-builder.Services.AddControllersWithViews().AddMvcOptions(options =>
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+})
+    .AddMvcOptions(options =>
 {
     options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
 });
 
 
 builder.Services.AddAplicationServices();
+
 
 var app = builder.Build();
 

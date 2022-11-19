@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="5.2.2" />
+    <PackageReference Include="HtmlSanitizer" Version="8.0.601" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.11" />
     <PackageReference Include="Microsoft.Owin.Security.Facebook" Version="4.2.2" />
     <PackageReference Include="popper.js" Version="1.16.1" />
