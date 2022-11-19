@@ -44,6 +44,8 @@ E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\Peezy
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Newtonsoft.Json.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\Owin.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\SendGrid.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\StarkbankEcdsa.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\System.Drawing.Common.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

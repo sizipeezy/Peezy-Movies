@@ -74,6 +74,10 @@
               "target": "Package",
               "version": "[4.2.2, )"
             },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.28.1, )"
+            },
             "bootstrap": {
               "target": "Package",
               "version": "[5.2.2, )"
