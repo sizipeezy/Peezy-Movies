@@ -13,61 +13,63 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Movies" asp-action="Index">Top Movies Worldwide</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+              <div class="container-fluid">
+              <a class="navbar-brand" asp-area="" asp-controller="Movies" asp-action="Index">Top Movies Worldwide</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="All"> Movies</a>
-                        </li>
-                        <li>
-                            <a class="nav-link text-dark" asp-controller="Contacts" asp-action="Contact">Contacts</a>
-                        </li>
-                        @if (User.Identity.IsAuthenticated && this.User?.Identity != null)
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                  <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                      <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="All"> Movies
+                        <span class="visually-hidden">(current)</span>
+                     </a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link text-dark" asp-controller="Contacts" asp-action="Contact">Contacts</a>
+                    </li>
+                   @if (User.Identity.IsAuthenticated && this.User?.Identity != null)
+                    {
+                        @if (this.User.IsInRole("Admin"))
                         {
-                            @if (this.User.IsInRole("Admin"))
-                            {
-                               <li>
-                                  <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Add">Add Movie</a>
-                              </li>
-                            }
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Mine">Watched</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Add">Add Movie</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="badge-info bi-gear"></i> Management 
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" asp-controller="Cinema" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
-                                    <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
-                                    <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
-                                </div>
-                            </li>
+
                         }
-                    </ul>
-                    @if(this.User.Identity.IsAuthenticated)
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Mine">Watched</a>
+                         </li>
+
+                    }
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                      <div class="dropdown-menu">
+                         <a class="dropdown-item" asp-controller="Cinema" asp-action="Index"><i class="bi bi-camera-reels"></i> Cinemas</a>
+                         <a class="dropdown-item" asp-controller="Producers" asp-action="Index"><i class="bi bi-headset"></i> Producers</a>
+                         <a class="dropdown-item" asp-controller="Actors" asp-action="Index"><i class="bi bi-person-square"></i> Actors</a>
+                        <div class="dropdown-divider"></div>
+                      </div>
+                    </li>
+                  </ul>
+                    @if (this.User.Identity.IsAuthenticated)
                     {
                          <ul class="navbar-nav"> Items
                             @await Component.InvokeAsync("ShoppingCartSummary")
-                       </ul>
-                         <form style="display:flex" class="form-inline my-2 my-lg-0" asp-controller="Movies" asp-action="Filter" style="padding-right: 25px;">
-                            <input name="input" type="text" class="form-control" placeholder="Search for a movie..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button  class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
-                         </form>
-                         
+                         </ul>
                     }
-                
-                    <partial name="_LoginPartial" />
+                    <form class="d-flex" asp-controller="Movies" asp-action="Filter">
+                    <input name="input" class="form-control me-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+                  <partial name="_LoginPartial" />
                 </div>
-            </div>
-        </nav>
+              </div>
+            </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
