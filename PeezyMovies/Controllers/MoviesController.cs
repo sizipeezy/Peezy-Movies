@@ -20,7 +20,7 @@
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> All([FromQuery]AllMoviesViewModel model)
+        public IActionResult All([FromQuery]AllMoviesViewModel model)
         {
             var viewModel = this.movieService.All(model);
             viewModel.Genres = this.movieService.GenresNamesAsStrings();
@@ -67,6 +67,10 @@
 
         public async Task<IActionResult> Details(int movieId)
         {
+            if ((await movieService.Exists(movieId)) == false)
+            {
+                return this.NotFound();
+            }
             var viewModel = await movieService.GetMovieByIdAsync(movieId);
             return View(viewModel);
 

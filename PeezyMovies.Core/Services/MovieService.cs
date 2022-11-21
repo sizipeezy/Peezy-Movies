@@ -74,7 +74,7 @@
             });
         }
 
-     
+
         public async Task<IEnumerable<Cinema>> GetCinemasAsync()
         {
             return await repo.All<Cinema>().ToListAsync();
@@ -232,7 +232,7 @@
 
         public AllMoviesViewModel All(AllMoviesViewModel model)
         {
-            var query =  repo.All<Movie>().AsQueryable();
+            var query = repo.All<Movie>().AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(model.Genre))
             {
@@ -273,8 +273,8 @@
             {
                 Movies = movies,
                 CurrentPage = model.CurrentPage,
-                 MoviesPerPage = model.MoviesPerPage,
-                 Sorting = model.Sorting,
+                MoviesPerPage = model.MoviesPerPage,
+                Sorting = model.Sorting,
                 Genre = model.Genre,
                 TotalCount = query.Count()
             };
@@ -286,5 +286,9 @@
                 .Distinct()
                 .ToList();
         }
+
+        public async Task<bool> Exists(int id) =>
+            await repo.AllReadonly<Movie>().AnyAsync(x => x.Id == id);
+       
     }
 }

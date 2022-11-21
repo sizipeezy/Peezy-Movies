@@ -7,6 +7,7 @@
 
     public interface IMovieService
     {
+        Task<bool> Exists(int id);
         Task<IEnumerable<MovieViewModel>> GetAllAsync();
 
          Task AddMovieAsync(AddMovieViewModel model);
