@@ -76,14 +76,6 @@
 
         }
 
-        [AllowAnonymous]
-        public async Task<IActionResult> Index()
-        {
-            var viewModel = await movieService.GetLastThreeAsync();
-
-            return View(viewModel);
-        }
-
         public async Task<IActionResult> Mine()
         {
             var userId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;

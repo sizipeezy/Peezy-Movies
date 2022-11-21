@@ -10,7 +10,7 @@
         Task<bool> Exists(int id);
         Task<IEnumerable<MovieViewModel>> GetAllAsync();
 
-         Task AddMovieAsync(AddMovieViewModel model);
+        Task AddMovieAsync(AddMovieViewModel model);
 
         AllMoviesViewModel All(AllMoviesViewModel model);
 
@@ -21,7 +21,6 @@
         Task<Movie> GetMovieByIdAsync(int movieId);
 
         Task EditMovieAsync(AddMovieViewModel model, int movieId);
-        Task<IEnumerable<MovieViewModel>> GetLastThreeAsync();
 
         Task AddMovieToCollectionAsync(string userId, int movieId);
 

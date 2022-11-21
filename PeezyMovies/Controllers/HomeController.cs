@@ -1,8 +1,10 @@
 ﻿namespace PeezyMovies.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
+    using PeezyMovies.Core.Services;
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
     using PeezyMovies.Models;
@@ -11,29 +13,31 @@
     public class HomeController : Controller
     {
         private readonly IRepository repo;
+        private readonly IHomeService homeService;
 
-        public HomeController(IRepository repo)
+        public HomeController(IRepository repo, IHomeService homeService)
         {
             this.repo = repo;
+            this.homeService = homeService;
         }
 
+        [Authorize(Roles = WebAppDataConstants.Admin)]
         public IActionResult AjaxDemo()
         {
             return this.View();
         }
 
+        [Authorize(Roles = WebAppDataConstants.Admin)]
         public IActionResult AjaxData()
         {
             var result = this.repo.All<Actor>().ToList();
             return this.Json(result);
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            if (User?.Identity.IsAuthenticated ?? false)
-            {
-                return this.RedirectToAction("Index", "Movies");
-            }
-            return View();
+            var viewModel = await homeService.GetLastThreeAsync();
+
+            return View(viewModel);
         }
 
        public IActionResult NotFound(int statusCode)
