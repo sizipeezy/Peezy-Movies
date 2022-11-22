@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Mvc.Rendering;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
+    using PeezyMovies.Infrastructure.Data.Models;
     using System.Security.Claims;
 
     [Authorize]
@@ -110,8 +111,12 @@
             return this.RedirectToAction(nameof(All), model);
         }
 
-        public IActionResult Trailer(int id)
+        public async Task<IActionResult> Trailer(int id)
         {
+            if ((await movieService.Exists(id)) == false)
+            {
+                return this.NotFound();
+            }
             var viewModel = this.movieService.MovieForView(id);
 
             return View(viewModel);
