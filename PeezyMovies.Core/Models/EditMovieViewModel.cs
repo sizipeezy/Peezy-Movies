@@ -24,6 +24,10 @@
         [Url]
         public string? ImageUrl { get; set; }
 
+        [Url]
+        [Required]
+        public string MovieTrailer { get; set; }
+
         [Required]
         //[Range(typeof(decimal), "0.0", "10.0", ConvertValueInInvariantCulture = true)]
 

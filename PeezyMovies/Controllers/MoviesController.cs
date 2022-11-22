@@ -5,9 +5,7 @@
     using Microsoft.AspNetCore.Mvc.Rendering;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using PeezyMovies.Infrastructure.Data.Models;
     using System.Security.Claims;
-    using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
     [Authorize]
     public class MoviesController : Controller
@@ -111,6 +109,13 @@
             model.Genres = movieService.GenresNamesAsStrings();
             return this.RedirectToAction(nameof(All), model);
         }
-    
+
+        public IActionResult Trailer(int id)
+        {
+            var viewModel = this.movieService.MovieForView(id);
+
+            return View(viewModel);
+        }
+
     }
 }

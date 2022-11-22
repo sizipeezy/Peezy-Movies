@@ -8,6 +8,8 @@
     public interface IMovieService
     {
         Task<bool> Exists(int id);
+
+        MovieViewModel MovieForView(int id);
         Task<IEnumerable<MovieViewModel>> GetAllAsync();
 
         Task AddMovieAsync(AddMovieViewModel model);

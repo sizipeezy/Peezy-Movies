@@ -4,6 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using PeezyMovies.Infrastructure.Data.Configuration;
     using PeezyMovies.Infrastructure.Data.Models;
+    using System.Reflection.Emit;
 
     public class ApplicationDbContext : IdentityDbContext<User>
     {
@@ -48,6 +49,10 @@
 
             builder.Entity<OrderItem>()
                 .HasKey(x => new { x.OrderId, x.MovieId });
+
+            builder.Entity<Movie>()
+            .Property(o => o.Rating)
+            .HasColumnType("decimal(18,4)");
 
             builder.ApplyConfiguration(new GenreConfiguration());
             builder.ApplyConfiguration(new CinemaConfiguration());

@@ -16,11 +16,16 @@
         public string Director { get; set; }
 
         [Required( ErrorMessage = "Enter price between 1$ and 500$")]
-   
         public decimal Price { get; set; }
+
         [Required]
         [Url]
         public string ImageUrl { get; set; }
+
+        [Display(Name = "Trailer's Url")]
+        [Required]
+        [Url]
+        public string MovieTrailer { get; set; }
 
         [Required]
         [Range(typeof(decimal), "0.0", "10.0", ConvertValueInInvariantCulture = true)]
@@ -30,6 +35,7 @@
         [Required]
         [MaxLength(200, ErrorMessage = "Enter a description with maximum 200 chars")]
         public string Description { get; set; }
+
 
         [Display(Name = "Select actor(s)")]
         [Required]

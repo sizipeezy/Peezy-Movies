@@ -32,6 +32,7 @@
                 CinemaId = model.CinemaId,
                 GenreId = model.GenreId,
                 ProducerId = model.ProducerId,
+                Trailer = model.MovieTrailer,
 
             };
 
@@ -71,6 +72,7 @@
                 Rating = x.Rating,
                 ImageUrl = x.ImageUrl,
                 Title = x.Title,
+                MovieTrailer = x.Trailer,
             });
         }
 
@@ -155,6 +157,7 @@
                    Producer = m.Movie.Producer.FullName,
                    Cinema = m.Movie.Cinema?.Name,
                    Genre = m.Movie.Genre?.Name,
+                   MovieTrailer = m.Movie.Trailer,
                });
         }
 
@@ -175,7 +178,8 @@
                     CinemaId = x.CinemaId,
                     GenreId = x.GenreId,
                     ProducerId = x.ProducerId,
-                    Title = x.Title
+                    Title = x.Title,
+                    MovieTrailer = x.Trailer,
                 }).FirstOrDefault();
         }
 
@@ -229,6 +233,7 @@
                     Rating = x.Rating,
                     ImageUrl = x.ImageUrl,
                     Title = x.Title,
+                    MovieTrailer = x.Trailer,
 
                 })
                 .ToList();
@@ -254,6 +259,19 @@
 
         public async Task<bool> Exists(int id) =>
             await repo.AllReadonly<Movie>().AnyAsync(x => x.Id == id);
-       
+
+        public MovieViewModel MovieForView(int id) => this.repo.All<Movie>()
+                .Where(x => x.Id == id)
+                .Select(x => new MovieViewModel
+                {
+                    Id = x.Id,
+                    ImageUrl = x.ImageUrl,
+                    Director = x.Director,
+                    Rating = x.Rating,
+                    Title = x.Title,
+                    MovieTrailer = x.Trailer,
+                })
+                .FirstOrDefault();
+        
     }
 }

@@ -26,7 +26,11 @@
         public string ImageUrl { get; set; }
 
         [Required]
+        public string Trailer { get; set; }
+
+        [Required]
         [Range(20.0, 200.00)]
+        [Column(TypeName = "decimal(18,4)")]
         public decimal Price { get; set; }
 
         [MaxLength(500)]

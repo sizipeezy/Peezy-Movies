@@ -8,9 +8,10 @@
     {
         [Required]
         public int Amount { get; set; }
-        [Required]
-        public decimal Price { get; set; }
 
+        [Required]
+        [Column(TypeName = "decimal(18,4)")]
+        public decimal Price { get; set; }
 
         public int OrderId { get; set; }
 
