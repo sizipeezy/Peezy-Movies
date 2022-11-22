@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using PeezyMovies.Core.Services;
     using PeezyMovies.Infrastructure.Data.Cart;
 
     [Authorize]
@@ -60,6 +59,8 @@
             {
                 shoppingCart.AddItemToCart(item);
             }
+
+            TempData["GlobalMessage"] = "Movie was added to ShoppingCart!";
             return RedirectToAction(nameof(ShoppingCart));
         }
         public async Task<IActionResult> RemoveItemFromShoppingCart(int movieId)
