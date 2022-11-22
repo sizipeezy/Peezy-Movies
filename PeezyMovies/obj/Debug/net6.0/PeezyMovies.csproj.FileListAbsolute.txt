@@ -1,3 +1,5 @@
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\PeezyMovies.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\appsettings.Development.json
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\appsettings.json
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\appsettings.Production.json
@@ -53,7 +55,6 @@ E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\Peezy
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\System.Security.Permissions.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\System.Windows.Extensions.dll
-E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
@@ -84,7 +85,6 @@ E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\Peezy
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\scopedcss\bundle\PeezyMovies.styles.css
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\scopedcss\projectbundle\PeezyMovies.bundle.scp.css
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\PeezyMovies.csproj.CopyComplete
-E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\PeezyMovies.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\refint\PeezyMovies.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\PeezyMovies.pdb
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\PeezyMovies.genruntimeconfig.cache

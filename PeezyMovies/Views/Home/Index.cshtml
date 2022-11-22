@@ -44,12 +44,10 @@
         {
                     <div class="carousel-item @(first ? "active" : string.Empty)">
 
-                        <img class="d-block w-100" style="height:500px"
-                    src="@movie.ImageUrl" alt="@movie.Title">
+                           <img  src="@movie.ImageUrl" title="@movie.Title" class="img-responsive img-fluid" alt="Movie Cover Path" />
                         <div class="carousel-caption d-none d-md-block">
                             <h5>
-                                <a class="btn btn-primary" asp-controller="Movies" asp-action="All"
-                            > @movie.Title</a>
+                             <a class="btn btn-primary" asp-controller="Movies" asp-action="Trailer" asp-route-id="@movie.Id"> @movie.Title</a>
                             </h5>
                         </div>
                     </div>
@@ -66,5 +64,3 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-
-          

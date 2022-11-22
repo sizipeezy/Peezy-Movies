@@ -33,7 +33,7 @@ builder.Services.AddDefaultIdentity<User>(options =>
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
-
+builder.Services.AddMemoryCache(); 
 
 builder.Services.ConfigureApplicationCookie(options =>
 {

@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Caching.Memory;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Core.Services;
@@ -14,11 +15,14 @@
     {
         private readonly IRepository repo;
         private readonly IHomeService homeService;
+        private readonly IMemoryCache cache;
 
-        public HomeController(IRepository repo, IHomeService homeService)
+
+        public HomeController(IRepository repo, IHomeService homeService, IMemoryCache cache)
         {
             this.repo = repo;
             this.homeService = homeService;
+            this.cache = cache;
         }
 
         [Authorize(Roles = WebAppDataConstants.Admin)]
@@ -35,9 +39,22 @@
         }
         public async Task<IActionResult> Index()
         {
-            var viewModel = await homeService.GetLastThreeAsync();
+            const string latestMoviesCache = "LatestMoviesCacheKey";
 
-            return View(viewModel);
+            var latest = this.cache.Get<IEnumerable<MovieViewModel>>(latestMoviesCache);
+
+            if(latest == null)
+            {
+                latest = await this.homeService.GetLastThreeAsync();
+
+                var cacheOptions = new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(15));
+
+                this.cache.Set(latestMoviesCache, latest, cacheOptions);
+            }
+
+            return this.View(latest);
+
         }
 
        public IActionResult NotFound(int statusCode)
