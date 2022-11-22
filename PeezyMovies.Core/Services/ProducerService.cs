@@ -67,6 +67,9 @@
             await repo.SaveChangesAsync();
         }
 
+        public async Task<bool> Exists(int id) => 
+            await repo.AllReadonly<Producer>().AnyAsync(x => x.Id == id);
+
         public async Task<IEnumerable<ProducerViewModel>> GetAllAsync()
         {
             var allProducers = await repo.AllReadonly<Producer>().Select(x => new ProducerViewModel
@@ -79,23 +82,9 @@
             return allProducers;
         }
 
-        public Producer GetById(int producerId)
-        {
-           return this.repo.All<Producer>().FirstOrDefault(x => x.Id == producerId);
+        public Producer GetById(int producerId) => 
+            this.repo.All<Producer>().FirstOrDefault(x => x.Id == producerId);
            
-        }
-
-        public Task<ProducerViewModel> GetByIdAsync(int producerId)
-        {
-            return this.repo.All<Producer>()
-                .Where(x => x.Id == producerId)
-                .Select(x => new ProducerViewModel
-            {
-                FullName = x.FullName,
-                Id = x.Id,
-                ImageUrl = x.ImageUrl
-            }).FirstOrDefaultAsync();
-        }
 
         public async Task<ProducerViewModel> GetProducerDetails(int producerId)
         {

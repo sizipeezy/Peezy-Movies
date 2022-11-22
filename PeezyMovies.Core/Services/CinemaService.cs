@@ -44,6 +44,9 @@
             await repo.SaveChangesAsync();
         }
 
+        public async Task<bool> Exists(int id) => 
+            await repo.AllReadonly<Cinema>().AnyAsync(x => x.Id == id);
+
         public async Task<IEnumerable<CinemaViewModel>> GetAllAsync()
         {
             var cinemas = await repo.All<Cinema>().Select(x => new CinemaViewModel

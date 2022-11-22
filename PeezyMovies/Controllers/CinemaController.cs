@@ -19,6 +19,11 @@
         [AllowAnonymous]
         public  async Task<IActionResult> Details(int id)
         {
+            if ((await cinemaService.Exists(id)) == false)
+            {
+                return this.NotFound();
+            }
+
             var cinema = await cinemaService.GetByIdAsync(id);
             return this.View(cinema);
         }
@@ -54,6 +59,7 @@
         [HttpGet]
         public IActionResult Edit(int id)
         {
+
             var cinema =  cinemaService.GetById(id);
             if(cinema == null)
             {
@@ -65,6 +71,11 @@
         [HttpPost]
         public async Task<IActionResult> Edit(int id, AddCinemaViewModel model)
         {
+            if ((await cinemaService.Exists(id)) == false)
+            {
+                return this.NotFound();
+            }
+
             if (!ModelState.IsValid)
             {
                 return this.View(model);
@@ -83,10 +94,9 @@
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var cinema = cinemaService.GetById(id);
-            if(cinema == null)
+            if ((await cinemaService.Exists(id)) == false)
             {
-                return View("NotFound");
+                return this.NotFound();
             }
 
             await cinemaService.DeleteCinemaAsync(id);

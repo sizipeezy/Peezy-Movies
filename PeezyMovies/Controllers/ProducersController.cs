@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using PeezyMovies.Core.Services;
 
     [Authorize(Roles = "Admin")]
     public class ProducersController : Controller
@@ -46,13 +45,19 @@
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
-            var viewModel = await producerService.GetByIdAsync(id);
+            if ((await producerService.Exists(id)) == false)
+            {
+                return this.NotFound();
+            }
+
+            var viewModel = await producerService.GetProducerDetails(id);
             return this.View(viewModel);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
+
             var viewModel = producerService.EditById(id);
             return this.View(viewModel);
         }
@@ -61,6 +66,11 @@
         [HttpPost]
         public async Task<IActionResult> Edit(AddProducerViewModel model, int id)
         {
+            if ((await producerService.Exists(id)) == false)
+            {
+                return this.NotFound();
+            }
+
             if (!ModelState.IsValid)
             {
                 return this.View(model);
@@ -79,10 +89,9 @@
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var producer = producerService.GetById(id);
-            if (producer == null)
+            if ((await producerService.Exists(id)) == false)
             {
-                return View("NotFound");
+                return this.NotFound();
             }
 
             await producerService.DeleteProducerAsync(id);
