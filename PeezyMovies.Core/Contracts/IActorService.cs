@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     public interface IActorService
     {
+        Task<bool> Exists(int id);
         Task<IEnumerable<ActorViewModel>> GetAllAsync();
 
         Task AddActorAsync(AddActorViewModel model);
@@ -15,8 +16,6 @@
         Task<ActorViewModel> GetByIdAsync(int actorId);
 
         Task<AddActorViewModel> ActorById(int actorId);
-
-        Task<ActorViewModel> GetActorDetails(int actorId);
 
         Task EditActorDetailsAsync(AddActorViewModel model, int actorId);
 

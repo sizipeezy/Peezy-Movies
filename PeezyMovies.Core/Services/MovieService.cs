@@ -75,20 +75,11 @@
         }
 
 
-        public async Task<IEnumerable<Cinema>> GetCinemasAsync()
-        {
-            return await repo.All<Cinema>().ToListAsync();
-        }
+        public async Task<IEnumerable<Cinema>> GetCinemasAsync() => await repo.All<Cinema>().ToListAsync();
+        
+        public async Task<IEnumerable<Genre>> GetGenresAsync() => await repo.All<Genre>().ToListAsync();
 
-        public async Task<IEnumerable<Genre>> GetGenresAsync()
-        {
-            return await repo.All<Genre>().ToListAsync();
-        }
-        public async Task<IEnumerable<Producer>> GetProducersAsync()
-        {
-            return await repo.All<Producer>().ToListAsync();
-        }
-
+        public async Task<IEnumerable<Producer>> GetProducersAsync() => await repo.All<Producer>().ToListAsync();
 
         public async Task AddMovieToCollectionAsync(string userId, int movieId)
         {
@@ -200,15 +191,9 @@
             return movieDetails;
         }
 
-        public async Task<ActorsViewModel> GetActorsDropDown()
-        {
-            var actors = new ActorsViewModel()
-            {
-                Actors = await repo.All<Actor>().OrderBy(x => x.Id).ToListAsync(),
-            };
-
-            return actors;
-        }
+        public async Task<ActorsViewModel> GetActorsDropDown() => 
+            new ActorsViewModel() { Actors = await repo.All<Actor>().OrderBy(x => x.Id).ToListAsync() };
+   
 
         public AllMoviesViewModel All(AllMoviesViewModel model)
         {

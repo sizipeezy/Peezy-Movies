@@ -65,17 +65,7 @@
             await repo.SaveChangesAsync();
         }
 
-        public async Task<ActorViewModel> GetActorDetails(int actorId)
-        {
-            var actor = await repo.All<Actor>().Select(x => new ActorViewModel
-            {
-                Id = x.Id,
-                FullName = x.FullName,
-                Bio = x.Bio,
-                ImageUrl = x.ImageUrl,
-            }).FirstOrDefaultAsync(x => x.Id == actorId);
-            return actor;
-        }
+        public async Task<bool> Exists(int id) => await repo.AllReadonly<Actor>().AnyAsync(x => x.Id == id);
 
         public async Task<IEnumerable<ActorViewModel>> GetAllAsync()
         {
@@ -88,10 +78,8 @@
             }).ToListAsync();
         }
 
-        public Actor GetById(int actorId)
-        {
-            return repo.All<Actor>().FirstOrDefault(x => x.Id == actorId);
-        }
+        public Actor GetById(int actorId) => repo.All<Actor>().FirstOrDefault(x => x.Id == actorId);
+     
 
         public Task<ActorViewModel> GetByIdAsync(int actorId)
         {

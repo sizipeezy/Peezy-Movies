@@ -17,6 +17,7 @@
             this.actorService = actorService;
 
         }
+
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
@@ -45,28 +46,24 @@
         }
 
       
-
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
+            if (await actorService.Exists(id) == false)
+            {
+                return this.NotFound();
+            }
             var viewModel = await actorService.GetByIdAsync(id);
             return this.View(viewModel);
         }
 
 
-        //[HttpGet]
-        //public IActionResult Delete()
-        //{
-        //    return this.View();
-        //}
-
-        //[HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var actor =await actorService.GetByIdAsync(id);
-            if (actor == null)
+            if (await actorService.Exists(id) == false)
             {
-                return View("NotFound");
+                return this.NotFound();
             }
 
             await actorService.DeleteActorAsync(id);
@@ -84,6 +81,11 @@
         [HttpPost]
         public async Task<IActionResult> Edit(AddActorViewModel model, int id)
         {
+            if (await actorService.Exists(id) == false)
+            {
+                return this.NotFound();
+            }
+
             if (!ModelState.IsValid)
             {
                 return this.View(model);
