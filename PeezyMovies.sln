@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeezyMovies", "PeezyMovies\PeezyMovies.csproj", "{81100925-2F3E-440C-9ED7-1F26A666EB1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeezyMovies", "PeezyMovies\PeezyMovies.csproj", "{81100925-2F3E-440C-9ED7-1F26A666EB1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeezyMovies.Infrastructure", "PeezyMovies.Infrastructure\PeezyMovies.Infrastructure.csproj", "{6D571247-7D5E-4CD3-972B-B64A8FAD5506}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeezyMovies.Infrastructure", "PeezyMovies.Infrastructure\PeezyMovies.Infrastructure.csproj", "{6D571247-7D5E-4CD3-972B-B64A8FAD5506}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeezyMovies.Core", "PeezyMovies.Core\PeezyMovies.Core.csproj", "{E5BCDDA9-6F16-4051-A9E1-3689EC94B2A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeezyMovies.Core", "PeezyMovies.Core\PeezyMovies.Core.csproj", "{E5BCDDA9-6F16-4051-A9E1-3689EC94B2A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeezyMovies.UnitTests", "PeezyMovies.UnitTests\PeezyMovies.UnitTests.csproj", "{8BECFA3C-84F2-41BA-8F87-1FC28E0A2C6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E5BCDDA9-6F16-4051-A9E1-3689EC94B2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5BCDDA9-6F16-4051-A9E1-3689EC94B2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5BCDDA9-6F16-4051-A9E1-3689EC94B2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BECFA3C-84F2-41BA-8F87-1FC28E0A2C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BECFA3C-84F2-41BA-8F87-1FC28E0A2C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BECFA3C-84F2-41BA-8F87-1FC28E0A2C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BECFA3C-84F2-41BA-8F87-1FC28E0A2C6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
