@@ -27,10 +27,7 @@
         }
 
         [HttpGet]
-        public IActionResult Create()
-        {
-            return this.View();
-        }
+        public IActionResult Create() => View();
 
         [HttpPost]
         public async Task<IActionResult> Create(AddActorViewModel model)
@@ -53,6 +50,7 @@
             {
                 return this.NotFound();
             }
+
             var viewModel = await actorService.GetByIdAsync(id);
             return this.View(viewModel);
         }

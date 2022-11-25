@@ -24,10 +24,8 @@
         }
 
         [HttpGet]
-        public IActionResult Create()
-        {
-            return this.View();
-        }
+        public IActionResult Create() => View();
+       
 
         [HttpPost]
         public async Task<IActionResult> Create(AddProducerViewModel model)
@@ -57,7 +55,6 @@
         [HttpGet]
         public IActionResult Edit(int id)
         {
-
             var viewModel = producerService.EditById(id);
             return this.View(viewModel);
         }
@@ -81,10 +78,8 @@
         }
 
         [HttpGet]
-        public IActionResult Delete()
-        {
-            return this.View();
-        }
+        public IActionResult Delete() => View();
+
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)

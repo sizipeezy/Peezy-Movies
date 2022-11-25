@@ -4,6 +4,8 @@
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
+    using SendGrid.Helpers.Mail;
+    using SendGrid;
     using System.Threading.Tasks;
 
 
@@ -18,16 +20,17 @@
 
         public async Task SendEmail(ContactFormViewModel model)
         {
-            var contact = new Contact()
-            {
-                Email = model.Email,
-                Message = model.Content,
-                Name = model.Name,
-                Subject = model.Subject,
-            };
+            var appiKey = WebAppDataConstants.ApiKey;
+            var client = new SendGridClient(appiKey);
+            var from = new EmailAddress(model.Email, model.Name);
+            var subject = model.Subject;
+            var to = new EmailAddress("kaynewestsouth@gmail.com", "Example User");
+            var plainTextContent = model.Content;
+            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+            var response = await client.SendEmailAsync(msg);
 
-            await repo.AddAsync(contact);
-            await repo.SaveChangesAsync();
+            await this.repo.SaveChangesAsync();
 
         }
     }

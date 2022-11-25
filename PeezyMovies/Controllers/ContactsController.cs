@@ -5,8 +5,6 @@
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using SendGrid;
-    using SendGrid.Helpers.Mail;
 
     [Authorize]
     public class ContactsController : Controller
@@ -23,25 +21,11 @@
         }
 
         [AllowAnonymous]
-        public IActionResult Contact()
-        {
-
-            return View();
-        }
-
+        public IActionResult Contact() => View();
 
         public async Task<IActionResult> SendEmail(ContactFormViewModel model)
         {
-            var appiKey = WebAppDataConstants.ApiKey;
-            var client = new SendGridClient(appiKey);
-            var from = new EmailAddress(model.Email, model.Name);
-            var subject = model.Subject;
-            var to = new EmailAddress("kaynewestsouth@gmail.com", "Example User");
-            var plainTextContent = model.Content;
-            var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
-            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            var response = await client.SendEmailAsync(msg);
-
+            await contactService.SendEmail(model);
 
            if (!this.ModelState.IsValid)
            {

@@ -86,10 +86,8 @@
         }
 
         [HttpGet]
-        public  IActionResult Delete()
-        {
-            return this.View();
-        }
+        public IActionResult Delete() => View();
+        
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
