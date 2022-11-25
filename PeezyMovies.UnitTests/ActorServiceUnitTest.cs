@@ -3,6 +3,7 @@
     using Microsoft.Extensions.DependencyInjection;
     using NUnit.Framework;
     using PeezyMovies.Core.Contracts;
+    using PeezyMovies.Core.Models;
     using PeezyMovies.Core.Services;
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
@@ -11,6 +12,7 @@
     {
         private ServiceProvider serviceProvider;
         private InMemoryDbContext dbContext;
+
         [SetUp]
         public async Task Setup()
         {
@@ -29,11 +31,117 @@
         }
 
         [Test]
-        public async Task Test1()
+        public async Task DeleteProducerAsyncShouldReturnSuccess()
+        {
+            var service = serviceProvider.GetService<IProducerService>();
+            var randomId = new Random().Next(1, 3);
+          
+            var fakeProducer = service?.DeleteProducerAsync(randomId);
+
+            Assert.That(fakeProducer.IsCompletedSuccessfully);
+        }
+
+        
+
+        [Test]
+        public async Task EditProducerDetailAsyncShouldSucceedUpdate()
+        {
+            var service = serviceProvider.GetService<IProducerService>();
+            var randomId = new Random().Next(1, 3);
+            var EditProducerModel = new AddProducerViewModel()
+            {
+                Id = 5,
+                FullName = "Updated test",
+                ImageUrl = "https:",
+            };
+
+            var fakeProducer = service?.EditProducerDetailAsync(EditProducerModel, randomId);
+
+            Assert.That(fakeProducer.IsCompletedSuccessfully);
+        }
+        
+
+        [Test]
+        public async Task GetProducerDetailsShouldReturnTaskProducerViewModel()
+        {
+            var service = serviceProvider.GetService<IProducerService>();
+            var randomId = new Random().Next(1, 3);
+
+            var fakeProducer = service?.GetProducerDetails(randomId);
+
+            Assert.That(fakeProducer.IsCompleted);
+        }
+
+
+        [Test]
+        public async Task EditByIdShouldReturnTrue()
+        {
+            var service = serviceProvider.GetService<IProducerService>();
+            var randomId = new Random().Next(1, 3);
+
+            var fakeProducer = service?.EditById(randomId);
+
+            Assert.IsTrue(fakeProducer != null);
+        }
+
+        [Test]
+        public async Task EditByIdShouldReturnNullIfThereIsNoProducerWithId()
+        {
+            var service = serviceProvider.GetService<IProducerService>();
+            var randomId = new Random().Next(4, 10);
+
+            var fakeProducer = service?.EditById(randomId);
+
+            Assert.IsTrue(fakeProducer == null);
+        }
+
+
+        [Test]
+        public async Task AddProducerAsyncShouldAddProducerSuccess()
         {
             var service = serviceProvider.GetService<IProducerService>();
 
-            var product = await service.Exists(1);
+            var TestProducer = new AddProducerViewModel()
+            {
+                Id = 4,
+                FullName = "Test",
+                ImageUrl = "https"
+            };
+
+            var error = service?.AddProducerAsync(TestProducer);
+
+            Assert.That(error.IsCompletedSuccessfully == true);
+        }
+
+        [Test]
+        public async Task GetByIdShouldReturnProducer()
+        {
+            var service = serviceProvider.GetService<IProducerService>();
+
+            var randomId = new Random().Next(1, 3);
+
+            var currentProducer = service?.GetById(randomId);
+
+            Assert.That(currentProducer != null);
+        }
+
+
+        [Test]
+        public async Task AllGetAsyncShouldReturnAllThreeProducers()
+        {
+            var service = serviceProvider.GetService<IProducerService>();
+
+            var allProducers = await service?.GetAllAsync();
+
+            Assert.That(allProducers, Is.EqualTo(allProducers.ToList()));
+        }
+
+        [Test]
+        public async Task ExsistsShouldReturnTrueForTheProducer()
+        {
+            var service = serviceProvider.GetService<IProducerService>();
+
+            var product = await service?.Exists(1);
 
             Assert.That(product, Is.EqualTo(true));
         }
@@ -62,38 +170,6 @@
                 FullName = "Test Testov 3",
                 ImageUrl = "Http"
             };
-
-
-
-
-            var user = new User()
-            {
-                Id = "TestId",
-                Email = "test@gmail.com",
-                EmailConfirmed = true,
-                UserName = "TestUsername",
-            };
-
-
-            var category = new Category()
-            {
-                Name = "TestCategory"
-            };
-
-            var recipe = new Movie()
-            {
-               
-                ImageUrl = "https",
-                Description = "Test description",
-                Price = 51,
-                Trailer = "https",
-                Rating = 5.9M,
-                Director = "Johnnathan",
-                Title = "TestRecipe",
-            };
-
-            var recipeProducts = new List<Producer>();
-          
 
             await repo.AddAsync(product);
             await repo.AddAsync(product2);
