@@ -1,6 +1,7 @@
 ﻿namespace PeezyMovies.Core.Services
 {
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Common;
@@ -11,10 +12,12 @@
     public class ActorService : IActorService
     {
         private readonly IRepository repo;
+        private readonly ILogger logger;
 
-        public ActorService(IRepository repo)
+        public ActorService(IRepository repo, ILogger<ActorService> logger)
         {
             this.repo = repo;
+            this.logger = logger;
         }
 
         public Task<AddActorViewModel> ActorById(int actorId)
@@ -39,8 +42,17 @@
                 ImageUrl = model.ImageUrl,
             };
 
-            await repo.AddAsync(actor);
-            await repo.SaveChangesAsync();
+            try
+            {
+                await repo.AddAsync(actor);
+                await repo.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(nameof(AddActorAsync), ex);
+                throw new ApplicationException("Database failed to save");
+            }
+
         }
 
         public async Task DeleteActorAsync(int actorId)

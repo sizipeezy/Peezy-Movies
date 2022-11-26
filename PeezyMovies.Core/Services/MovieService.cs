@@ -1,6 +1,7 @@
 ﻿namespace PeezyMovies.Core.Services
 {
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Common;
@@ -13,10 +14,12 @@
     public class MovieService : IMovieService
     {
         private readonly IRepository repo;
+        private readonly ILogger logger;
 
-        public MovieService(IRepository _repo)
+        public MovieService(IRepository _repo, ILogger<MovieService> logger)
         {
             this.repo = _repo;
+            this.logger = logger;
         }
 
         public async Task AddMovieAsync(AddMovieViewModel model)
@@ -36,8 +39,16 @@
 
             };
 
-            await repo.AddAsync(movie);
-            await repo.SaveChangesAsync();
+            try
+            {
+                await repo.AddAsync(movie);
+                await repo.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(nameof(AddMovieAsync), ex);
+                throw new ApplicationException("Database failed to save", ex);
+            }
 
             foreach (var actorId in model.ActorIds)
             {
