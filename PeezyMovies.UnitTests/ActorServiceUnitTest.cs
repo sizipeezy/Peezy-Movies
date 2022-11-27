@@ -1,7 +1,10 @@
 ﻿namespace PeezyMovies.UnitTests
 {
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using Moq;
     using NUnit.Framework;
+    using NUnit.Framework.Internal;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Core.Services;
@@ -22,129 +25,131 @@
             serviceProvider = serviceCollection
                 .AddSingleton(sp => dbContext.CreateContext())
                 .AddSingleton<IRepository, Repository>()
-                .AddSingleton<IProducerService, ProducerService>()
+                .AddSingleton<IActorService, ActorService>()
+                .AddLogging()
                 .BuildServiceProvider();
 
-            var repo = serviceProvider.GetService<IRepository>();
 
+            var repo = serviceProvider.GetService<IRepository>();
+            var logger = Mock.Of<ILogger<IActorService>>();
+
+      
             await SeedAsync(repo);
         }
 
         [Test]
-        public async Task DeleteProducerAsyncShouldReturnSuccess()
+        public void DeleteActorAsyncShouldReturnSuccess()
         {
-            var service = serviceProvider.GetService<IProducerService>();
+            var service = serviceProvider.GetService<IActorService>();
             var randomId = new Random().Next(1, 3);
-          
-            var fakeProducer = service?.DeleteProducerAsync(randomId);
+
+            var fakeProducer = service?.DeleteActorAsync(randomId);
 
             Assert.That(fakeProducer.IsCompletedSuccessfully);
         }
 
-        
-
         [Test]
-        public async Task EditProducerDetailAsyncShouldSucceedUpdate()
+        public async Task EditActorDetailAsyncShouldSucceedUpdate()
         {
-            var service = serviceProvider.GetService<IProducerService>();
+            var service = serviceProvider.GetService<IActorService>();
             var randomId = new Random().Next(1, 3);
-            var EditProducerModel = new AddProducerViewModel()
+            var EditActorModel = new AddActorViewModel()
             {
                 Id = 5,
                 FullName = "Updated test",
                 ImageUrl = "https:",
             };
 
-            var fakeProducer = service?.EditProducerDetailAsync(EditProducerModel, randomId);
+            var fakeProducer = service?.EditActorDetailsAsync(EditActorModel, randomId);
 
             Assert.That(fakeProducer.IsCompletedSuccessfully);
         }
-        
+
 
         [Test]
-        public async Task GetProducerDetailsShouldReturnTaskProducerViewModel()
+        public void ActorByIdShouldSucceed()
         {
-            var service = serviceProvider.GetService<IProducerService>();
+            var service = serviceProvider.GetService<IActorService>();
             var randomId = new Random().Next(1, 3);
 
-            var fakeProducer = service?.GetProducerDetails(randomId);
+            var fakeActor = service?.ActorById(randomId);
 
-            Assert.That(fakeProducer.IsCompleted);
+            Assert.IsTrue(fakeActor != null);
         }
 
-
         [Test]
-        public async Task EditByIdShouldReturnTrue()
+        public void EditByIdShouldReturnTrue()
         {
-            var service = serviceProvider.GetService<IProducerService>();
+            var service = serviceProvider.GetService<IActorService>();
             var randomId = new Random().Next(1, 3);
 
-            var fakeProducer = service?.EditById(randomId);
+            var fakeActor = service?.GetById(randomId);
 
-            Assert.IsTrue(fakeProducer != null);
+            Assert.IsTrue(fakeActor != null);
         }
 
         [Test]
-        public async Task EditByIdShouldReturnNullIfThereIsNoProducerWithId()
+        public void GetByIdShouldReturnNullIfThereIsNoSuchActorWithId()
         {
-            var service = serviceProvider.GetService<IProducerService>();
-            var randomId = new Random().Next(4, 10);
+            var service = serviceProvider.GetService<IActorService>();
 
-            var fakeProducer = service?.EditById(randomId);
+            var fakeActor = service?.GetById(2391);
 
-            Assert.IsTrue(fakeProducer == null);
+            Assert.IsTrue(fakeActor == null);
         }
 
 
         [Test]
-        public async Task AddProducerAsyncShouldAddProducerSuccess()
+        public async Task AddActorShouldSucceed()
         {
-            var service = serviceProvider.GetService<IProducerService>();
+            var service = serviceProvider.GetService<IActorService>();
 
-            var TestProducer = new AddProducerViewModel()
+            var testActor = new AddActorViewModel()
             {
-                Id = 4,
-                FullName = "Test",
-                ImageUrl = "https"
+                FullName = "Thank you",
+                ImageUrl = "For The Test",
+                Bio = "Test Bio",
             };
 
-            var error = service?.AddProducerAsync(TestProducer);
+            var result = service.AddActorAsync(testActor);
 
-            Assert.That(error.IsCompletedSuccessfully == true);
-        }
+            Assert.IsTrue(result.IsCompletedSuccessfully);
 
-        [Test]
-        public async Task GetByIdShouldReturnProducer()
-        {
-            var service = serviceProvider.GetService<IProducerService>();
-
-            var randomId = new Random().Next(1, 3);
-
-            var currentProducer = service?.GetById(randomId);
-
-            Assert.That(currentProducer != null);
         }
 
 
         [Test]
-        public async Task AllGetAsyncShouldReturnAllThreeProducers()
+        public async Task GetAllAsyncShouldSucceed()
         {
-            var service = serviceProvider.GetService<IProducerService>();
+            var service = serviceProvider.GetService<IActorService>();
 
-            var allProducers = await service?.GetAllAsync();
+            var result = await service.GetAllAsync();
 
-            Assert.That(allProducers, Is.EqualTo(allProducers.ToList()));
+            Assert.True(result.Any());
+        }
+
+
+        [Test]
+        public void ExistsShouldReturnFalse()
+        {
+            var service = serviceProvider.GetService<IActorService>();
+
+            var result = service?.Exists(-12);
+
+            Assert.IsFalse(result?.Result);
         }
 
         [Test]
-        public async Task ExsistsShouldReturnTrueForTheProducer()
+        public void ExistsShouldReturnTrue()
         {
-            var service = serviceProvider.GetService<IProducerService>();
 
-            var product = await service?.Exists(1);
+            var service = serviceProvider.GetService<IActorService>();
 
-            Assert.That(product, Is.EqualTo(true));
+            var result = service?.Exists(1);
+
+            Assert.IsNotNull(result);
         }
+
 
         private async Task SeedAsync(IRepository repo)
         {
