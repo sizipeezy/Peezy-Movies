@@ -11,6 +11,12 @@
                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
            </form>
        </li>
+       @if(this.User.IsInRole(WebAppDataConstants.Admin))
+       {
+          <li class="nav-item">
+              <a class="nav-link text-dark" asp-area="Admin" asp-controller="Movies" asp-action="All">Administration</a>
+          </li>
+       }
     }
     else
     {

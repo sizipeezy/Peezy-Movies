@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MovieViewModel>
+
+@{
+    ViewBag.Title = "Admin Pannel";
+}
+
+<h1>Movies</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Price</th>
+            <th scope="col">Deleted</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td scope="col">@movie.Id</td>
+                <td scope="col">@movie.Title</td>
+                <td scope="col">@movie.Rating</td>
+                <td scope="col">@movie.Genre</td>
+                <td scope="col">@movie.Price</td>
+                <td scope="col">@(movie.IsDeleted ? "Yes" : "No")</td>
+                <td scope="col">
+                    <a asp-area="" asp-controller="Cars" asp-action="Delete" asp-route-id="@movie.Id" class="btn btn-danger float-right ml-3">Delete</a>
+                    <a asp-area="" asp-controller="Cars" asp-action="Edit" asp-route-id="@movie.Id" class="btn btn-warning float-right ml-3">Edit</a>
+                    <a asp-area="Admin" asp-controller="Cars" asp-action="ChangeVisibility" asp-route-id="@movie.Id" class="btn btn-info float-right ml-3">@(movie.IsDeleted ? "Hide" : "Show")</a>
+                    <a asp-area="" asp-controller="Cars" asp-action="Details" asp-route-id="@movie.Id" class="btn btn-primary float-right ml-3">View</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
