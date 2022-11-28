@@ -6,6 +6,7 @@
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Models;
+    using System.Data;
     using System.Security.Claims;
 
     [Authorize]
@@ -29,7 +30,7 @@
 
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = WebAppDataConstants.Admin)]
         public async Task<IActionResult> Add()
         {
             var movieDropDowns = await movieService.GetActorsDropDown();
@@ -49,7 +50,7 @@
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = WebAppDataConstants.Admin)]
         public async Task<IActionResult> Add(AddMovieViewModel model)
         {
             if (!ModelState.IsValid)
@@ -120,6 +121,18 @@
             var viewModel = this.movieService.MovieForView(id);
 
             return View(viewModel);
+        }
+
+        public async Task<IActionResult> Remove(int id)
+        {
+            if((await movieService.Exists(id)) == false)
+            {
+                return this.NotFound();
+            }
+
+            await this.movieService.DeleteMovie(id);
+
+            return this.RedirectToAction(nameof(All));
         }
 
     }

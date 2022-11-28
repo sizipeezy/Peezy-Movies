@@ -10,6 +10,7 @@ namespace PeezyMovies.Core.Models
         public decimal Rating { get; set; }
         public string ImageUrl { get; set; }
         public string MovieTrailer { get; set; }
+        public bool IsDeleted { get; set; }
         public decimal Price { get; set; }
         public string? Description { get; set; }
         public string? Producer { get; set; }

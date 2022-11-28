@@ -7,6 +7,7 @@
 
     public interface IMovieService
     {
+        Task<bool> DeleteMovie(int id);
         Task<bool> Exists(int id);
 
         MovieViewModel MovieForView(int id);

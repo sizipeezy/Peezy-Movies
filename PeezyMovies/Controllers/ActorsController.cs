@@ -6,7 +6,7 @@
     using PeezyMovies.Core.Models;
     using PeezyMovies.Core.Services;
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = WebAppDataConstants.Admin)]
     public class ActorsController : Controller
     {
         private readonly IActorService actorService;

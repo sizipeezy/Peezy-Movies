@@ -36,6 +36,7 @@
                 GenreId = model.GenreId,
                 ProducerId = model.ProducerId,
                 Trailer = model.MovieTrailer,
+                IsDeleted = false,
 
             };
 
@@ -66,7 +67,9 @@
 
         public async Task<IEnumerable<MovieViewModel>> GetAllAsync()
         {
-            var entities = await repo.All<Movie>().Include(x => x.Genre)
+            var entities = await repo.All<Movie>()
+                .Where(x => x.IsDeleted == false)
+                .Include(x => x.Genre)
                 .Include(x => x.Producer)
                 .Include(x => x.Cinema)
                 .ToListAsync();
@@ -107,7 +110,7 @@
             }
 
             var movie = await repo.All<Movie>()
-                .Where(x => x.Id == movieId)
+                .Where(x => x.Id == movieId && x.IsDeleted == false)
                 .FirstOrDefaultAsync();
             if (!user.UsersMovies.Any(x => x.MovieId == movie?.Id))
             {
@@ -179,7 +182,7 @@
 
         public EditMovieViewModel GetById(int movieId)
         {
-            return this.repo.All<Movie>().Where(x => x.Id == movieId)
+            return this.repo.All<Movie>().Where(x => x.Id == movieId && x.IsDeleted == false)
                 .Select(x => new EditMovieViewModel
                 {
                     Id = x.Id,
@@ -197,6 +200,7 @@
         public async Task<Movie> GetMovieByIdAsync(int movieId)
         {
             var movieDetails = await repo.All<Movie>()
+                .Where(x => x.IsDeleted == false)
                 .Include(c => c.Genre)
                 .Include(c => c.Cinema)
                .Include(p => p.Producer)
@@ -212,7 +216,7 @@
 
         public AllMoviesViewModel All(AllMoviesViewModel model)
         {
-            var query = repo.All<Movie>().AsQueryable();
+            var query = repo.All<Movie>().Where(x => x.IsDeleted == false).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(model.Genre))
             {
@@ -269,10 +273,10 @@
         }
 
         public async Task<bool> Exists(int id) =>
-            await repo.AllReadonly<Movie>().AnyAsync(x => x.Id == id);
+            await repo.AllReadonly<Movie>().Where(x => x.IsDeleted == false).AnyAsync(x => x.Id == id);
 
         public MovieViewModel MovieForView(int id) => this.repo.All<Movie>()
-                .Where(x => x.Id == id)
+                .Where(x => x.Id == id && x.IsDeleted == false)
                 .Select(x => new MovieViewModel
                 {
                     Id = x.Id,
@@ -283,6 +287,17 @@
                     MovieTrailer = x.Trailer,
                 })
                 .FirstOrDefault();
-        
+
+        public async Task<bool> DeleteMovie(int id)
+        {
+            var movie = await this.repo.All<Movie>().Where(x => x.IsDeleted == false)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            movie.IsDeleted = true;
+
+            await repo.SaveChangesAsync();
+
+            return true;
+        }
     }
 }

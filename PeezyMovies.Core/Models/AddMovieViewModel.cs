@@ -36,6 +36,7 @@
         [MaxLength(200, ErrorMessage = "Enter a description with maximum 200 chars")]
         public string Description { get; set; }
 
+        public bool IsDeleted { get; set; } = false;
 
         [Display(Name = "Select actor(s)")]
         [Required]

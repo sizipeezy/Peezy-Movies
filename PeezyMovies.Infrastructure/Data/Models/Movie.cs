@@ -35,6 +35,9 @@
 
         [MaxLength(500)]
         public string? Description { get; set; }
+
+        public bool IsDeleted { get; set; }
+
         [Required]
         public int ProducerId { get; set; }
 

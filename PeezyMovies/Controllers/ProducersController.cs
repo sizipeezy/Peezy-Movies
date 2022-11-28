@@ -4,8 +4,9 @@
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
+    using System.Data;
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = WebAppDataConstants.Admin)]
     public class ProducersController : Controller
     {
         private readonly IProducerService producerService;
