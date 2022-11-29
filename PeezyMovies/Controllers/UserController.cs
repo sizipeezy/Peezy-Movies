@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Models;
 
@@ -17,6 +18,13 @@
         {
             userManager = _userManager;
             signInManager = _signInManager;
+        }
+
+        public async Task<IActionResult> Users()
+        {
+            var users = await this.userManager.Users.ToListAsync();
+
+            return this.View(users);
         }
 
         [HttpGet]

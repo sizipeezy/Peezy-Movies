@@ -5,7 +5,6 @@
     using Microsoft.Extensions.DependencyInjection;
     using PeezyMovies.Infrastructure.Data.Models;
 
-
     public class ShoppingCart
     {
         public ApplicationDbContext context { get; set; }
