@@ -175,26 +175,20 @@
                });
         }
 
-        public Task EditMovieAsync(AddMovieViewModel model, int movieId)
+        public async Task EditMovie(int movieId, EditMovieViewModel model)
         {
-            throw new NotImplementedException();
-        }
+            var testMovie = await this.repo.All<Movie>().FirstOrDefaultAsync(x => x.Id == movieId);
 
-        public EditMovieViewModel GetById(int movieId)
-        {
-            return this.repo.All<Movie>().Where(x => x.Id == movieId && x.IsDeleted == false)
-                .Select(x => new EditMovieViewModel
-                {
-                    Id = x.Id,
-                    ImageUrl = x.ImageUrl,
-                    Director = x.Director,
-                    Rating = x.Rating,
-                    CinemaId = x.CinemaId,
-                    GenreId = x.GenreId,
-                    ProducerId = x.ProducerId,
-                    Title = x.Title,
-                    MovieTrailer = x.Trailer,
-                }).FirstOrDefault();
+           testMovie.ImageUrl = model.ImageUrl;
+           testMovie.Director = model.Director;
+           testMovie.Rating = model.Rating;
+           testMovie.CinemaId = model.CinemaId;
+           testMovie.GenreId = model.GenreId;
+           testMovie.ProducerId = model.ProducerId;
+           testMovie.Title = model.Title;
+           testMovie.Trailer = model.MovieTrailer;
+
+            await repo.SaveChangesAsync();
         }
 
         public async Task<Movie> GetMovieByIdAsync(int movieId)

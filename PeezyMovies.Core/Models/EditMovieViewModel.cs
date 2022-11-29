@@ -35,9 +35,12 @@
 
         [Required]
         [MaxLength(200, ErrorMessage = "Enter a description with maximum 200 chars")]
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
-        public IEnumerable<Actor> Actors { get; set; } = new List<Actor>();
+
+        [Display(Name = "Select actor(s)")]
+        [Required]
+        public List<int> ActorIds { get; set; }
 
         [Required]
         public int GenreId { get; set; }

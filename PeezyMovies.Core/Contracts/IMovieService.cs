@@ -19,11 +19,9 @@
 
         IEnumerable<string> GenresNamesAsStrings();
 
-        EditMovieViewModel GetById(int movieId);
-
         Task<Movie> GetMovieByIdAsync(int movieId);
 
-        Task EditMovieAsync(AddMovieViewModel model, int movieId);
+        Task EditMovie(int movieId, EditMovieViewModel model);
 
         Task AddMovieToCollectionAsync(string userId, int movieId);
 

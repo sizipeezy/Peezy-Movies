@@ -5,7 +5,6 @@
     using Microsoft.AspNetCore.Mvc.Rendering;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using PeezyMovies.Infrastructure.Data.Models;
     using System.Data;
     using System.Security.Claims;
 
