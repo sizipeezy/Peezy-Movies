@@ -102,7 +102,10 @@
                </div>
                     <p class="card-text">
                         <a class="btn btn-danger text-white" asp-controller="Movies" asp-action="Trailer" asp-route-id="@movie.Id">Trailer</a>
-                        <a class="btn btn-danger text-white" asp-controller="Movies" asp-action="Remove" asp-route-id="@movie.Id">Delete</a>
+                        @if(this.User.IsInRole(WebAppDataConstants.Admin))
+                        {
+                         <a class="btn btn-danger text-white" asp-area="Admin" asp-controller="Movies" asp-action="Remove" asp-route-id="@movie.Id">Delete</a>
+                        }
                 @if (User.Identity.IsAuthenticated)
                 {
                   <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="AddToCollection" method="post">

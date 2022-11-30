@@ -55,6 +55,8 @@
                 Producers = await movieService.GetProducersAsync(),
             };
 
+      
+
             return this.View(viewModel);
         }
 
@@ -67,6 +69,8 @@
             }
 
             await movieService.EditMovie(id, model);
+
+            TempData["message"] = "You have successfully edite a movie!";
 
             return this.Redirect(nameof(All));
         }
@@ -81,6 +85,21 @@
             return View(viewModel);
 
         }
+
+        public async Task<IActionResult> Remove(int id)
+        {
+            if ((await movieService.Exists(id)) == false)
+            {
+                return this.NotFound();
+            }
+
+            await this.movieService.DeleteMovie(id);
+
+            TempData["message"] = "You have successfully deleted a movie!";
+
+            return this.RedirectToAction(nameof(All));
+        }
+
 
     }
 }

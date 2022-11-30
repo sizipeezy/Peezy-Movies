@@ -48,6 +48,8 @@
             };
 
            await shoppingCart.ClearCart();
+
+
             return View(viewModel);
         }
 
@@ -60,7 +62,7 @@
                 shoppingCart.AddItemToCart(item);
             }
 
-            TempData["GlobalMessage"] = "Movie was added to ShoppingCart!";
+            TempData["message"] = "Movie was added to ShoppingCart!";
             return RedirectToAction(nameof(ShoppingCart));
         }
         public async Task<IActionResult> RemoveItemFromShoppingCart(int movieId)

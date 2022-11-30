@@ -20,13 +20,6 @@
             signInManager = _signInManager;
         }
 
-        public async Task<IActionResult> Users()
-        {
-            var users = await this.userManager.Users.ToListAsync();
-
-            return this.View(users);
-        }
-
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Register()

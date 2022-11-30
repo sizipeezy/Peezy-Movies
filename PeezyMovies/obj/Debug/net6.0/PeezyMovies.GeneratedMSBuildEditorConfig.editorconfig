@@ -27,6 +27,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW92aWVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Areas/Admin/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -177,10 +181,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/User/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/User/Users.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2Vycy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/C\# Asp.Net Books/ASP.NET 6 Web Advanced/ASP.NET MVC Project/PeezyMovies/PeezyMovies/Views/_ViewImports.cshtml]

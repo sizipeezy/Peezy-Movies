@@ -87,6 +87,8 @@
             var userId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
             await movieService.AddMovieToCollectionAsync(userId, movieId);
 
+            TempData["message"] = "You have successfully added movie to Watchlist!";
+
             return RedirectToAction(nameof(All));
         }
 
@@ -120,19 +122,6 @@
             var viewModel = this.movieService.MovieForView(id);
 
             return View(viewModel);
-        }
-
-        public async Task<IActionResult> Remove(int id)
-        {
-            if((await movieService.Exists(id)) == false)
-            {
-                return this.NotFound();
-            }
-
-            await this.movieService.DeleteMovie(id);
-
-            return this.RedirectToAction(nameof(All));
-        }
-
+        }       
     }
 }
