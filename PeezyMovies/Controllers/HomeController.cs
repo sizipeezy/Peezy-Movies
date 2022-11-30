@@ -39,6 +39,10 @@
         }
         public async Task<IActionResult> Index()
         {
+            if(this.User.IsInRole(WebAppDataConstants.Admin))
+            {
+                return this.RedirectToAction("All", "Movies", new { area = "Admin" });
+            }
             const string latestMoviesCache = "LatestMoviesCacheKey";
 
             var latest = this.cache.Get<IEnumerable<MovieViewModel>>(latestMoviesCache);
