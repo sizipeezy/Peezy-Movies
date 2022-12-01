@@ -10,7 +10,7 @@
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(GlobalConstants.Genre.GenreMaxLength)]
         public string Name { get; set; }
 
         public List<Movie> Movies { get; set; } = new List<Movie>();

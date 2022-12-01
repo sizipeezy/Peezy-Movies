@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-
+   
 
     public class Movie
     {
@@ -12,11 +12,11 @@
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(40)]
+        [MaxLength(GlobalConstants.Movie.TitleMaxLength)]
         public string Title { get; set; }
 
         [Required]
-        [MaxLength(40)]
+        [MaxLength(GlobalConstants.Movie.DirectorMaxLength)]
         public string Director { get; set; }
 
         [Required]
@@ -29,11 +29,11 @@
         public string Trailer { get; set; }
 
         [Required]
-        [Range(20.0, 200.00)]
+        [Range(GlobalConstants.Movie.PriceMinLength, GlobalConstants.Movie.PriceMaxLength)]
         [Column(TypeName = "decimal(18,4)")]
         public decimal Price { get; set; }
 
-        [MaxLength(500)]
+        [MaxLength(GlobalConstants.Movie.DescriptionMaxLength)]
         public string? Description { get; set; }
 
         public bool IsDeleted { get; set; }

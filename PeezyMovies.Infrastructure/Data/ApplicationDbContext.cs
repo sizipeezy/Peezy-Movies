@@ -4,7 +4,6 @@
     using Microsoft.EntityFrameworkCore;
     using PeezyMovies.Infrastructure.Data.Configuration;
     using PeezyMovies.Infrastructure.Data.Models;
-    using System.Reflection.Emit;
 
     public class ApplicationDbContext : IdentityDbContext<User>
     {

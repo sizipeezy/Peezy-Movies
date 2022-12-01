@@ -25,9 +25,9 @@
             <tr>
                 <td scope="col">@movie.Id</td>
                 <td scope="col">@movie.Title</td>
-                <td scope="col">@movie.Rating</td>
+                <td scope="col">@String.Format("{0:f2}", movie.Rating)</td>
                 <td scope="col">@movie.Genre</td>
-                <td scope="col">@movie.Price</td>
+                <td scope="col">@String.Format("{0:f2}", movie.Price) BGN</td>
                 <td>
                     @if (@movie.IsDeleted != false)
                     {
@@ -42,7 +42,6 @@
                 <td scope="col">
                     <a asp-area="Admin" asp-controller="Movies" asp-action="Delete" asp-route-id="@movie.Id" class="btn btn-danger float-right ml-3">Delete</a>
                     <a asp-area="Admin" asp-controller="Movies" asp-action="Edit" asp-route-id="@movie.Id" class="btn btn-warning float-right ml-3">Edit</a>
-                    <a asp-area="Admin" asp-controller="Movies" asp-action="ChangeVisibility" asp-route-id="@movie.Id" class="btn btn-info float-right ml-3">@(movie.IsDeleted ? "Hide" : "Show")</a>
                     <a asp-area="Admin" asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id" class="btn btn-primary float-right ml-3">View</a>
                 </td>
             </tr>

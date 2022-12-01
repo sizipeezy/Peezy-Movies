@@ -1,5 +1,4 @@
-﻿
-namespace PeezyMovies.Infrastructure.Data.Models
+﻿namespace PeezyMovies.Infrastructure.Data.Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -14,11 +13,11 @@ namespace PeezyMovies.Infrastructure.Data.Models
         public string ImageUrl { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(GlobalConstants.Actor.FullNameMaxLength)]
         public string FullName { get; set; }
 
-        [MaxLength(100)]
-        public string? Bio { get; set; }
+        [MaxLength(GlobalConstants.Actor.BioMaxLength)]
+        public string Bio { get; set; }
 
         public List<ActorMovie> Movies { get; set; } = new List<ActorMovie>();
     }

@@ -10,7 +10,7 @@
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(GlobalConstants.Category.NameMaxLength)]
         public string Name { get; set; }
 
         public ICollection<MovieCategories> MovieCategories { get; set; } = new List<MovieCategories>();

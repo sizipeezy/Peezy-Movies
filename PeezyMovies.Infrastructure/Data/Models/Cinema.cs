@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-
     public class Cinema
     {
         [Key]
@@ -11,11 +10,13 @@
 
         [Required]
         public string Logo { get; set; }
+
         [Required]
-        [MaxLength(25)]
+        [MaxLength(GlobalConstants.Cinema.NameMaxLength)]
         public string Name { get; set; }
+
         [Required]
-        [MaxLength(100)]
+        [MaxLength(GlobalConstants.Cinema.DescriptionMaxLength)]
         public string Description { get; set; }
 
         public List<Movie> Movies { get; set; } = new List<Movie>();

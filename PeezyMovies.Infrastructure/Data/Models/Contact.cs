@@ -2,7 +2,6 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-
     public class Contact
     {
         [Key]
@@ -10,18 +9,18 @@
 
 
         [Required]
-        [StringLength(60, MinimumLength = 3)]
+        [StringLength(GlobalConstants.Conntact.NameMaxLength, MinimumLength = GlobalConstants.Conntact.NameMinLength)]
         public string Name { get; set; }
 
         [Required]
         public string Email { get; set; }
 
         [Required]
-        [MaxLength(200)]
+        [MaxLength(GlobalConstants.Conntact.SubjectMaxLength)]
         public string Subject { get; set; }
 
         [Required]
-        [MaxLength(500)]
+        [MaxLength(GlobalConstants.Conntact.MessageMaxLength)]
         public string Message { get; set; }
     }
 }

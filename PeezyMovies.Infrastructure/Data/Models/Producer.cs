@@ -10,7 +10,7 @@
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(GlobalConstants.Producer.ProducerMaxLength)]
         public string FullName { get; set; }
 
         [Required]

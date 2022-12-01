@@ -18,8 +18,12 @@
 
                     <h5 class="card-title mt-1">@movie.Title</h5>
                     <p class="mb-0">Director: @movie.Director</p>
-                    <p class="mb-0">Rating: @movie.Rating</p>
-                    <p class="mb-0">Price: @movie.Price</p>
+                        <p class="mb-0">Rating:  
+                            <b scope="col">@String.Format("{0:f2}", movie.Rating)</b>
+                            </p>
+                        <p class="mb-0">Price:                       
+                            <b scope="col">@String.Format("{0:f2}", movie.Price)</b>
+                        </p>
                     <p>Genre: @movie.Genre</p>
                 </div>
 
