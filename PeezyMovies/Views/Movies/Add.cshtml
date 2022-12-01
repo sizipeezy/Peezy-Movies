@@ -55,7 +55,7 @@
                 <select asp-for="@Model.GenreId" class="form-control">
                     @foreach (var genre in Model.Genres)
                     {
-                            <option value="@genre.Id">@genre.Name</option>
+                       <option value="@genre.Id">@genre.Name</option>
                     }
                 </select>
                 <span asp-validation-for="GenreId" class="text-danger"></span>
@@ -65,7 +65,7 @@
                 <select asp-for="@Model.CinemaId" class="form-control">
                     @foreach (var cinema in Model.Cinemas)
                     {
-                                <option value="@cinema.Id">@cinema.Name</option>
+                        <option value="@cinema.Id">@cinema.Name</option>
                     }
                 </select>
                 <span asp-validation-for="CinemaId" class="text-danger"></span>
@@ -75,7 +75,7 @@
                 <select asp-for="@Model.ProducerId" class="form-control">
                     @foreach (var producer in Model.Producers)
                     {
-                                    <option value="@producer.Id">@producer.FullName</option>
+                       <option value="@producer.Id">@producer.FullName</option>
                     }
                 </select>
                 <span asp-validation-for="ProducerId" class="text-danger"></span>

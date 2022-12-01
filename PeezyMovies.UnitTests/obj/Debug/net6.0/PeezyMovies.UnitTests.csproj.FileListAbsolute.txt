@@ -1,3 +1,5 @@
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\CoverletSourceRootsMapping
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\testhost.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\PeezyMovies.deps.json
@@ -172,7 +174,6 @@ E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\Peezy
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
@@ -386,7 +387,6 @@ E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\Peezy
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\runtimes\linux-arm\native\libe_sqlite3.so
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\runtimes\linux-arm64\native\libe_sqlite3.so
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\runtimes\linux-armel\native\libe_sqlite3.so
-E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\runtimes\linux-mips64\native\libe_sqlite3.so
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\runtimes\linux-musl-x64\native\libe_sqlite3.so
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\runtimes\linux-s390x\native\libe_sqlite3.so
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.UnitTests\bin\Debug\net6.0\runtimes\linux-x64\native\libe_sqlite3.so

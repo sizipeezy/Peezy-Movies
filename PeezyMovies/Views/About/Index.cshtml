@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "About Page";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr/>
+
+
+<div class="card" style="display:inline">
+    <div class="row">     
+          <div class="card-body">
+     
+            Hello this is the @ViewBag.Title;
+            <br />
+           This page is maded to show some info for the users on site.
+           The project has been started at first of November.
+             <br />
+           It has 8 controllers more than 30 views and 8 services also had a Admin area
+           completed by MVC.
+
+           Click the button down to get some info about the Actors in the project.
+
+           The viewers can use the site to see the latest movies added by and also the contacts and about page with dropdown with the fully info.
+
+           The users can Buy, Watch Trailer, See details, Pay with integrated paypal, also can use the search and pagging from the first to last page
+
+           Also can sort within 3 options by Rating/Price/Genre and Filter by Genres.
+
+           If there is a problem users can send email via Integrated Send Grid System coming to the owner/admin.
+       </div>
+     </div>
+</div>
+
+<h1>Hello AJAX!</h1>
+
+<table id="DataTable" class="table table-sm table-striped">
+    <tr>
+        <td>Test1</td>
+        <td>Bio 1</td>
+    </tr>
+    <tr>
+        <td>Test2</td>
+        <td>Bio 2</td>
+    </tr>
+</table>
+<button onclick="RefreshData()" class="btn btn-success">Refresh</button>
+
+<script>
+    function RefreshData() {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var people = JSON.parse(this.responseText);
+                document.getElementById("DataTable").innerHTML = '';
+                for (var i = 0; i < people.length; i++) {
+                    var person = people[i];
+                    document.getElementById("DataTable").innerHTML +=
+                        "<tr><td>" + person.fullName + "</td><td>" + person.bio + "</td></tr>";
+                }
+            }
+        };
+        xhr.open("GET", "/About/AjaxData");
+        xhr.send();
+    }
+</script>

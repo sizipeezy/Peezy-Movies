@@ -13,30 +13,16 @@
 
     public class HomeController : Controller
     {
-        private readonly IRepository repo;
         private readonly IHomeService homeService;
         private readonly IMemoryCache cache;
 
 
-        public HomeController(IRepository repo, IHomeService homeService, IMemoryCache cache)
+        public HomeController(IHomeService homeService, IMemoryCache cache)
         {
-            this.repo = repo;
             this.homeService = homeService;
             this.cache = cache;
         }
 
-        [Authorize(Roles = WebAppDataConstants.Admin)]
-        public IActionResult AjaxDemo()
-        {
-            return this.View();
-        }
-
-        [Authorize(Roles = WebAppDataConstants.Admin)]
-        public IActionResult AjaxData()
-        {
-            var result = this.repo.All<Actor>().ToList();
-            return this.Json(result);
-        }
         public async Task<IActionResult> Index()
         {
             if(this.User.IsInRole(WebAppDataConstants.Admin))
