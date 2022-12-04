@@ -19,6 +19,6 @@
 
         [Display(Name = "Biography")]
         [Required(ErrorMessage = "Biography is required")]
-        public string? Bio { get; set; }
+        public string Bio { get; set; }
     }
 }
