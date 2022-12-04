@@ -4,6 +4,7 @@
     using Microsoft.Extensions.Logging;
     using Moq;
     using PeezyMovies.Core.Contracts;
+    using PeezyMovies.Core.Models;
     using PeezyMovies.Core.Services;
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
@@ -41,6 +42,68 @@
             await SeedAsync(repo);
         }
 
+        [Test]
+        public async Task GetMovieByIdAsync()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = await service.GetMovieByIdAsync(1);
+
+            Assert.That(result is not null);
+        }
+
+        [Test]
+        public void GenresNamesAsStrings()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = service.GenresNamesAsStrings();
+
+            Assert.That(result.Count() != 0);
+        }
+
+        [Test]
+        public async Task AddMovieAsyncShouldFail()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = service.AddMovieAsync(null);
+
+            Assert.ThrowsAsync<NullReferenceException>(async() => await result);
+        }
+
+
+        [Test]
+        public async Task GetAllAsyncShouldReturnSuccessfully()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = await service.GetAllAsync();
+
+            Assert.That(result.Any());
+        }
+
+
+        [Test]
+        public async Task MovieForViewReturnsMovieViewModel()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = service.MovieForView(1);
+
+            Assert.That(result != null);
+        }
+
+
+        [Test]
+        public async Task DeleteMovieSucceed()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = await service.DeleteMovie(1);
+
+            Assert.IsTrue(result);
+        }
 
         [Test]
         public async Task  ExsistsMovie()
