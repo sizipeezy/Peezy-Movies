@@ -9,10 +9,7 @@
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Security.Claims;
-    using System.Text;
     using System.Threading.Tasks;
 
 
@@ -40,6 +37,102 @@
 
 
             await SeedAsync(repo);
+        }
+
+        [Test]
+        public async Task GetActorsDropDown()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = await service.GetActorsDropDown();
+
+            Assert.IsNotNull(result);
+        }
+
+
+        [Test]
+        public async Task GetProducersAsyncShouldSucceed()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = await service.GetProducersAsync();
+
+            Assert.That(result.Any());
+        }
+
+
+        [Test]
+        public async Task GetCinemasAsyncShouldSucceed()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = await service.GetCinemasAsync();
+
+            Assert.That(result.Any());
+        }
+
+
+        [Test]
+        public async Task GetGenresAsyncShouldSucceed()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = await service.GetGenresAsync();
+
+            Assert.That(result.Any());
+        }
+
+        [Test]
+        public void GetWatchedAsync()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = service.GetWatchedAsync(Guid.NewGuid().ToString());
+
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void RemoveFromCollectionAsync()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var result = service.RemoveFromCollectionAsync(Guid.NewGuid().ToString(), 1);
+
+            Assert.That(result.IsCompletedSuccessfully);
+        }
+
+        [Test]
+        public void AddMovieToCollectionAsyncShouldFail()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var expected = service.AddMovieToCollectionAsync(Guid.NewGuid().ToString(), 1);
+
+            Assert.That(expected.IsCompletedSuccessfully);
+        }
+
+        [Test]
+        public void EditMovieSuccess()
+        {
+            var service = serviceProvider.GetService<IMovieService>();
+
+            var testMovie = new EditMovieViewModel()
+            {
+                Director = "Test",
+                Description = "Test description 3",
+                ImageUrl = "https.",
+                Title = "The Title 21",
+                Rating = 8.0M,
+                Price = 15.77M,
+            };
+
+            var result = service.EditMovie(1, testMovie);
+
+            Assert.IsNotNull(result);
+            Assert.IsFalse(result.IsCompletedSuccessfully);
+            Assert.That(result.IsCompleted);
+
         }
 
         [Test]
