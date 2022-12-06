@@ -9,11 +9,14 @@ using PeezyMovies.ModelBinders;
 using Microsoft.AspNetCore.Http;
 using PeezyMovies.Infrastructure.Data.Configuration;
 using Microsoft.AspNetCore.Mvc;
+using PeezyMovies.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services
+    .AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
@@ -41,7 +44,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 });
 
-builder.Services.AddAuthentication()
+builder.Services
+    .AddAuthentication()
     .AddFacebook(options =>
     {
         options.AppId = builder.Configuration.GetValue<string>("Facebook:AppId");
@@ -51,15 +55,14 @@ builder.Services.AddAuthentication()
 builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-})
-    .AddMvcOptions(options =>
+}).AddMvcOptions(options =>
 {
     options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
 });
 
 
 builder.Services.AddAplicationServices();
-
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -75,16 +78,14 @@ else
     app.UseHsts();
 }
 
-app.UseStatusCodePagesWithRedirects("/Home/NotFound?statusCode={0}"); // Midleware for missing page
-app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStatusCodePagesWithRedirects("/Home/NotFound?statusCode={0}")
+    .UseHttpsRedirection()
+    .UseStaticFiles()
+    .UseRouting()
+    .UseSession();
 
-app.UseRouting();
-
-app.UseSession();
-
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseAuthentication()
+   .UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
@@ -100,6 +101,8 @@ app.UseEndpoints(endpoints =>
 
 
     endpoints.MapRazorPages();
+    endpoints.MapHub<ChatHub>("/chatHub"); //Configure ChatHub endpoint
+
 });
 
 app.Run();

@@ -29,6 +29,7 @@
             {
                 return this.RedirectToAction("All", "Movies", new { area = "Admin" });
             }
+
             const string latestMoviesCache = "LatestMoviesCacheKey";
 
             var latest = this.cache.Get<IEnumerable<MovieViewModel>>(latestMoviesCache);
@@ -46,6 +47,8 @@
             return this.View(latest);
 
         }
+
+       public IActionResult Chat() => this.View();
 
        public IActionResult NotFound(int statusCode)
        {

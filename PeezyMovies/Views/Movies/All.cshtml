@@ -106,7 +106,7 @@
                    <p>Cinema: @movie.Cinema</p>
                </div>
                     <p class="card-text">
-                        <a class="btn btn-danger text-white" asp-controller="Movies" asp-action="Trailer" asp-route-id="@movie.Id">Trailer</a>
+                        <a class="btn btn-outline-secondary text-white" asp-controller="Movies" asp-action="Trailer" asp-route-id="@movie.Id">Trailer</a>
                         @if(this.User.IsInRole(WebAppDataConstants.Admin))
                         {
                          <a class="btn btn-danger text-white" asp-area="Admin" asp-controller="Movies" asp-action="Remove" asp-route-id="@movie.Id">Delete</a>
@@ -117,10 +117,10 @@
                   <input type="submit" value="Mark as Watched" class="fs-6 btn btn-success mb-3 p-2" />
                   </form>
                   <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="Details" method="post">
-                  <input type="submit" value="Details" class="fs-6 btn btn-success mb-3 p-2" />
+                  <input type="submit" value="Details" class="fs-6 btn btn-outline-primary mb-3 p-2" />
                   </form>
                   <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Orders" asp-action="AddItemToShoppingCart" method="post">
-                  <input type="submit" value="Add To Cart" class="fs-6 btn btn-success mb-3 p-2" />
+                  <input type="submit" value="Add To Cart" class="fs-6 btn btn-outline-info mb-3 p-2" />
                  </form>
                 }
 
@@ -128,44 +128,3 @@
            </div>
     }
 </div>
-
-@*@model IEnumerable<MovieViewModel>
-
-@{
-    ViewBag.Title = "Movies";
-}
-<h2 class="text-center">@ViewBag.Title</h2>
-<hr/>
-
-*@
-
-@*<div class="text-center row">
-    @foreach (var movie in Model)
-    {
-       <div class="card col-4" style="width: 20rem;">
-           <img class="card-img-top" style="width: 18rem;"
-        src="@movie.ImageUrl" alt="Book Image">
-           <div class="card-body">
-
-               <h5 class="card-title mt-1">@movie.Title</h5>
-               <p class="mb-0">Director: @movie.Director</p>
-               <p class="mb-0">Rating: @movie.Rating</p>
-               <p>Genre: @movie.Genre</p>
-               <p>Producer: @movie.Producer</p>
-               <p>Cinema: @movie.Cinema</p>
-           </div>
-           @if (User.Identity.IsAuthenticated)
-           {
-              <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="AddToCollection" method="post">
-              <input type="submit" value="Mark as Watched" class="fs-6 btn btn-success mb-3 p-2" />
-              </form>
-              <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="Details" method="post">
-              <input type="submit" value="Details" class="fs-6 btn btn-success mb-3 p-2" />
-              </form>
-              <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Orders" asp-action="AddItemToShoppingCart" method="post">
-              <input type="submit" value="Add To Cart" class="fs-6 btn btn-success mb-3 p-2" />
-             </form>
-           }
-       </div>
-    }
-</div>*@
