@@ -1,6 +1,7 @@
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\appsettings.Development.json
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\appsettings.json
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\appsettings.Production.json
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\libman.json
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\PeezyMovies.staticwebassets.runtime.json
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\PeezyMovies.exe
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\PeezyMovies.deps.json
@@ -290,4 +291,3 @@ E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\Peezy
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\PeezyMovies.pdb
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\PeezyMovies.genruntimeconfig.cache
 E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\obj\Debug\net6.0\ref\PeezyMovies.dll
-E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies\bin\Debug\net6.0\libman.json
