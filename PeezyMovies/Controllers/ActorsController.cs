@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using PeezyMovies.Core.Services;
 
     [Authorize(Roles = WebAppDataConstants.Admin)]
     public class ActorsController : Controller
@@ -52,6 +51,7 @@
             }
 
             var viewModel = await actorService.GetByIdAsync(id);
+
             return this.View(viewModel);
         }
 
@@ -65,6 +65,7 @@
             }
 
             await actorService.DeleteActorAsync(id);
+
             return this.RedirectToAction(nameof(Index));
         }
 
@@ -90,6 +91,7 @@
             }
 
             await actorService.EditActorDetailsAsync(model, id);
+
             return this.RedirectToAction(nameof(Index));
         }
     }

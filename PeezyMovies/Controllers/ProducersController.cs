@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using System.Data;
 
     [Authorize(Roles = WebAppDataConstants.Admin)]
     public class ProducersController : Controller
@@ -57,6 +56,7 @@
         public IActionResult Edit(int id)
         {
             var viewModel = producerService.EditById(id);
+
             return this.View(viewModel);
         }
          
@@ -91,6 +91,7 @@
             }
 
             await producerService.DeleteProducerAsync(id);
+
             return this.RedirectToAction(nameof(Index));
         }
 

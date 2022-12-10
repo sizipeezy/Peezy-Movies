@@ -25,9 +25,20 @@
         public async Task<IEnumerable<User>> AllUsers() => 
             await this.userManager.Users.ToListAsync();
 
-        public Task<bool> Forget(string userId)
+        public async Task<bool> Forget(string userId)
         {
-            throw new NotImplementedException();
+            var user = await userManager.FindByIdAsync(userId);
+
+            user.PhoneNumber = null;
+            user.Email = null;
+            user.NormalizedEmail = null;
+            user.NormalizedUserName = null;
+            user.PasswordHash = null;
+            user.UserName = $"forgottenUser-{DateTime.Now.Ticks}";
+
+            var result = await userManager.UpdateAsync(user);
+
+            return result.Succeeded;
         }
     }
 }

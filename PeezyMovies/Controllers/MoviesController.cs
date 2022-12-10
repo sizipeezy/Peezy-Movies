@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using PeezyMovies.Core.Constants;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
     using System.Data;
@@ -22,7 +23,9 @@
         public IActionResult All([FromQuery]AllMoviesViewModel model)
         {
             var viewModel = this.movieService.All(model);
+
             viewModel.Genres = this.movieService.GenresNamesAsStrings();
+
             return this.View(viewModel);
         }
 
@@ -71,6 +74,7 @@
                 return this.NotFound();
             }
             var viewModel = await movieService.GetMovieByIdAsync(movieId);
+
             return View(viewModel);
 
         }
@@ -78,7 +82,9 @@
         public async Task<IActionResult> Mine()
         {
             var userId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+
             var viewModel = await movieService.GetWatchedAsync(userId);
+
             return View(viewModel);
         }
 
@@ -87,7 +93,7 @@
             var userId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
             await movieService.AddMovieToCollectionAsync(userId, movieId);
 
-            TempData["message"] = "You have successfully added movie to Watchlist!";
+            TempData[MessageConstants.SuccessMessage] = "You have successfully added movie to Watchlist!";
 
             return RedirectToAction(nameof(All));
         }
@@ -95,7 +101,9 @@
         public async Task<IActionResult> RemoveFromCollection(int movieId)
         {
             var userId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+
             await movieService.RemoveFromCollectionAsync(userId, movieId);
+
             return RedirectToAction(nameof(Mine));
         }
 

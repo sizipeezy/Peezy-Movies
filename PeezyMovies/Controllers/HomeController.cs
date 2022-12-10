@@ -1,13 +1,9 @@
 ﻿namespace PeezyMovies.Controllers
 {
-    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Caching.Memory;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using PeezyMovies.Core.Services;
-    using PeezyMovies.Infrastructure.Data.Common;
-    using PeezyMovies.Infrastructure.Data.Models;
     using PeezyMovies.Models;
     using System.Diagnostics;
 

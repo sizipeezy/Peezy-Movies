@@ -2,9 +2,9 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
+    using PeezyMovies.Core.Constants;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using PeezyMovies.Core.Services;
 
     public class MoviesController : AdminController
     {
@@ -68,7 +68,7 @@
 
             await movieService.EditMovie(id, model);
 
-            TempData["message"] = "You have successfully edite a movie!";
+            TempData[MessageConstants.SuccessMessage] = "You have successfully edite a movie!";
 
             return this.Redirect(nameof(All));
         }
@@ -93,11 +93,9 @@
 
             await this.movieService.DeleteMovie(id);
 
-            TempData["message"] = "You have successfully deleted a movie!";
+            TempData[MessageConstants.WarningMessage] = "You have successfully deleted a movie!";
 
             return this.RedirectToAction(nameof(All));
         }
-
-
     }
 }

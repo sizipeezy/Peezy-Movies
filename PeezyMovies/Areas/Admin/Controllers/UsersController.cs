@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using PeezyMovies.Core.Contracts;
-using PeezyMovies.Infrastructure.Data.Models;
-
-namespace PeezyMovies.Areas.Admin.Controllers
+﻿namespace PeezyMovies.Areas.Admin.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using PeezyMovies.Core.Constants;
+    using PeezyMovies.Core.Contracts;
+
+
     public class UsersController : AdminController
     {
         private readonly IUserService userService;
@@ -22,9 +21,17 @@ namespace PeezyMovies.Areas.Admin.Controllers
             return this.View(users);
         }
 
-        public async Task<IActionResult> Forget()
+        [HttpPost]
+        public async Task<IActionResult> Forget(string userId)
         {
-            return this.View();
+            bool result = await userService.Forget(userId);
+
+            if (result)
+                TempData[MessageConstants.SuccessMessage] = "User is forgotten!";
+            else
+                TempData[MessageConstants.ErrorMessage] = "User is unforgetable!";
+
+            return this.RedirectToAction(nameof(Index));
         }
     }
 }

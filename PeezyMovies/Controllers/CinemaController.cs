@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using PeezyMovies.Core.Contracts;
     using PeezyMovies.Core.Models;
-    using System.Data;
 
     [Authorize(Roles = WebAppDataConstants.Admin)]
     public class CinemaController : Controller
@@ -26,6 +25,7 @@
             }
 
             var cinema = await cinemaService.GetByIdAsync(id);
+
             return this.View(cinema);
         }
 
@@ -34,6 +34,7 @@
         public async Task<IActionResult> Index()
         {
             var viewModel = await cinemaService.GetAllAsync();
+
             return View(viewModel);
         }
 
@@ -41,6 +42,7 @@
         public IActionResult Add()
         {
             var viewModel = new AddCinemaViewModel() { };
+
             return this.View(viewModel);
         }
 
@@ -60,8 +62,8 @@
         [HttpGet]
         public IActionResult Edit(int id)
         {
-
             var cinema =  cinemaService.GetById(id);
+
             if(cinema == null)
             {
                 return this.View("NotFound");
@@ -99,6 +101,7 @@
             }
 
             await cinemaService.DeleteCinemaAsync(id);
+
             return this.RedirectToAction(nameof(Index));
         }
        

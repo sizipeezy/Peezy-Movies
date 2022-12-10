@@ -33,6 +33,7 @@
            }
 
            this.TempData[RedirectedFromContactForm] = true;
+
             return this.RedirectToAction(nameof(ThankYou));
         }
 
