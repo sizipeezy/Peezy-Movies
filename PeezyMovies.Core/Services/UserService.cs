@@ -23,7 +23,7 @@
         }
 
         public async Task<IEnumerable<User>> AllUsers() => 
-            await this.userManager.Users.ToListAsync();
+            await this.userManager.Users.Where(x => x.IsActive == true).ToListAsync();
 
         public async Task<bool> Forget(string userId)
         {
@@ -34,6 +34,7 @@
             user.NormalizedEmail = null;
             user.NormalizedUserName = null;
             user.PasswordHash = null;
+            user.IsActive = false;
             user.UserName = $"forgottenUser-{DateTime.Now.Ticks}";
 
             var result = await userManager.UpdateAsync(user);

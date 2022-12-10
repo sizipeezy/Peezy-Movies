@@ -30,7 +30,7 @@
                             @Html.DisplayFor(modelItem => item.Email)
                             </td>
                             <td>
-                            <form asp-area="Admin" asp-controller="User" asp-action="Forget" asp-route-userId="@item.Id"  method="post">
+                            <form asp-area="Admin" asp-controller="Users" asp-action="Forget" asp-route-userId="@item.Id"  method="post">
                                 <button type="submit" class="btn btn-danger">Forget</button>
                             </form>
                              </td>

@@ -7,5 +7,7 @@
     public class User : IdentityUser
     {
         public List<UserMovie> UsersMovies { get; set; } = new List<UserMovie>();
+
+        public bool IsActive { get; set; } = true;
     }
 }
