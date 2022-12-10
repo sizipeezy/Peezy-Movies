@@ -55,8 +55,6 @@
                 Producers = await movieService.GetProducersAsync(),
             };
 
-      
-
             return this.View(viewModel);
         }
 

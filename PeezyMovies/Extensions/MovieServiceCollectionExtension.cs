@@ -19,6 +19,7 @@
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IAboutService, AboutService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(s => ShoppingCart.GetShoppingCart(s));

@@ -1,24 +1,30 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PeezyMovies.Core.Contracts;
 using PeezyMovies.Infrastructure.Data.Models;
 
 namespace PeezyMovies.Areas.Admin.Controllers
 {
     public class UsersController : AdminController
     {
-        private readonly UserManager<User> userManager;
+        private readonly IUserService userService;
 
-        public UsersController(UserManager<User> userManager)
+        public UsersController(IUserService userService)
         {
-            this.userManager = userManager;
+            this.userService = userService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var users = await this.userManager.Users.ToListAsync();
+            var users = await userService.AllUsers();
 
             return this.View(users);
+        }
+
+        public async Task<IActionResult> Forget()
+        {
+            return this.View();
         }
     }
 }
