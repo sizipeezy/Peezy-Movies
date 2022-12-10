@@ -106,7 +106,9 @@
                    <p>Cinema: @movie.Cinema</p>
                </div>
                     <p class="card-text">
-                        <a class="btn btn-outline-secondary text-white" asp-controller="Movies" asp-action="Trailer" asp-route-id="@movie.Id">Trailer</a>
+                        <a type="submit" class="btn btn-outline-secondary" asp-controller="Movies" asp-action="Trailer" asp-route-id="@movie.Id"><span class="bi bi-badge-4k"></span>
+                            Trailer
+                        </a>
                         @if(this.User.IsInRole(WebAppDataConstants.Admin))
                         {
                          <a class="btn btn-danger text-white" asp-area="Admin" asp-controller="Movies" asp-action="Remove" asp-route-id="@movie.Id">Delete</a>
@@ -114,16 +116,15 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                   <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="AddToCollection" method="post">
-                  <input type="submit" value="Mark as Watched" class="fs-6 btn btn-success mb-3 p-2" />
+                   <button type="submit" class="fs-6 btn btn-success mb-3 p-2"><span class="bi bi-bookmark-plus"></span>"Mark as Watched"</button>
                   </form>
                   <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Movies" asp-action="Details" method="post">
                   <input type="submit" value="Details" class="fs-6 btn btn-outline-primary mb-3 p-2" />
                   </form>
                   <form class="input-group-sm" asp-route-movieId="@movie.Id" asp-controller="Orders" asp-action="AddItemToShoppingCart" method="post">
-                  <input type="submit" value="Add To Cart" class="fs-6 btn btn-outline-info mb-3 p-2" />
-                 </form>
+                 <button type="submit" class="fs-6 btn btn-outline-info mb-3 p-2"><span class="bi bi-bag-plus-fill"></span>Add to Cart (Price @movie.Price.ToString("c"))</button>
+                 </form>             
                 }
-
                    </p>
            </div>
     }

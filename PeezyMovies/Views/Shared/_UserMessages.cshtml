@@ -1,0 +1,22 @@
+﻿@using PeezyMovies.Core.Constants
+
+@if (TempData[MessageConstants.ErrorMessage] != null)
+{
+        <script>
+                $(function () { toastr.error('@TempData[MessageConstants.ErrorMessage].ToString()'); });
+        </script>
+}
+
+@if (TempData[MessageConstants.WarningMessage] != null)
+{
+        <script>
+                $(function () { toastr.warning('@TempData[MessageConstants.WarningMessage].ToString()'); });
+        </script>
+}
+
+@if (TempData[MessageConstants.SuccessMessage] != null)
+{
+        <script>
+                $(function () { toastr.success('@TempData[MessageConstants.SuccessMessage].ToString()'); });
+        </script>
+}

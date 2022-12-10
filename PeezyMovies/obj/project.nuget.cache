@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CRoAT2PuwJXSCe3Wd5o3D/YqfXqakA3mtBn2/xl/eODPmTXTks8594rK8ooBndKDbb7N7LGHxJXedbHrf6iq+Q==",
+  "dgSpecHash": "+OZYW7KkPp7Ilc6OTdWGgylHsKBx/WgCs5KLID1ToFZjVMd6B4nLKvcEDyf5ZKsShjj0ZfwquwMdjnU9pudV1w==",
   "success": true,
   "projectFilePath": "E:\\C# Asp.Net Books\\ASP.NET 6 Web Advanced\\ASP.NET MVC Project\\PeezyMovies\\PeezyMovies\\PeezyMovies.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\User\\.nuget\\packages\\bootstrap\\5.2.2\\bootstrap.5.2.2.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\htmlsanitizer\\8.0.601\\htmlsanitizer.8.0.601.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\jquery\\1.6.3\\jquery.1.6.3.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
@@ -232,7 +233,8 @@
     "C:\\Users\\User\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\User\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\toastr\\2.1.1\\toastr.2.1.1.nupkg.sha512"
   ],
   "logs": [
     {

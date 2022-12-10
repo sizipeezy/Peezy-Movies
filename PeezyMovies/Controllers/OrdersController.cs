@@ -75,6 +75,8 @@
             {
                 shoppingCart.RemoveItemFromCart(item);
             }
+
+            TempData[MessageConstants.ErrorMessage] = "Movie was removed!";
             return RedirectToAction(nameof(ShoppingCart));
         }
 

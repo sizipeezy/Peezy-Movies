@@ -53,8 +53,9 @@
                 <a class="btn btn-outline-primary float-right" asp-action="All">
                     Back to List
                 </a>
+             
                 <form class="input-group-sm" asp-route-movieId="@Model.Id" asp-controller="Orders" asp-action="AddItemToShoppingCart" method="post">
-                 <input type="submit" value="Add to Cart (Price @Model.Price.ToString("c"))" class="fs-6 btn btn-success mb-3 p-2" />
+                 <button type="submit" class="btn btn-primary"><span class="bi bi-bag-plus-fill"></span>Add to Cart (Price @Model.Price.ToString("c"))</button>
                  </form>
 
             </p>

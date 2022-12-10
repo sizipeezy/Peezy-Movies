@@ -57,7 +57,7 @@
             builder.ApplyConfiguration(new CinemaConfiguration());
             builder.ApplyConfiguration(new ActorConfiguration());
             builder.ApplyConfiguration(new ProducersConfiguration());
-
+            builder.ApplyConfiguration(new MovieConfiguration());
 
             base.OnModelCreating(builder);
         }

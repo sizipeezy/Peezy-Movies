@@ -383,6 +383,10 @@
             "popper.js": {
               "target": "Package",
               "version": "[1.16.1, )"
+            },
+            "toastr": {
+              "target": "Package",
+              "version": "[2.1.1, )"
             }
           },
           "imports": [
