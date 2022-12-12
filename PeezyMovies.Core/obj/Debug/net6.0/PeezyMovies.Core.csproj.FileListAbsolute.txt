@@ -1,0 +1,15 @@
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\bin\Debug\net6.0\PeezyMovies.Core.deps.json
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\bin\Debug\net6.0\PeezyMovies.Core.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\bin\Debug\net6.0\PeezyMovies.Core.pdb
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\bin\Debug\net6.0\PeezyMovies.Infrastructure.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\bin\Debug\net6.0\PeezyMovies.Infrastructure.pdb
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\PeezyMovies.Core.csproj.AssemblyReference.cache
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\PeezyMovies.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\PeezyMovies.Core.AssemblyInfoInputs.cache
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\PeezyMovies.Core.AssemblyInfo.cs
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\PeezyMovies.Core.csproj.CoreCompileInputs.cache
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\PeezyMovies.Core.csproj.CopyComplete
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\PeezyMovies.Core.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\refint\PeezyMovies.Core.dll
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\PeezyMovies.Core.pdb
+E:\C# Asp.Net Books\ASP.NET 6 Web Advanced\ASP.NET MVC Project\PeezyMovies\PeezyMovies.Core\obj\Debug\net6.0\ref\PeezyMovies.Core.dll

@@ -1,6 +1,7 @@
 ﻿namespace Microsoft.Extensions.DependencyInjection
 {
     using PeezyMovies.Core.Contracts;
+    using PeezyMovies.Core.Exceptions;
     using PeezyMovies.Core.Services;
     using PeezyMovies.Infrastructure.Data.Cart;
     using PeezyMovies.Infrastructure.Data.Common;
@@ -20,6 +21,7 @@
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IAboutService, AboutService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IGuard, Guard>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(s => ShoppingCart.GetShoppingCart(s));
