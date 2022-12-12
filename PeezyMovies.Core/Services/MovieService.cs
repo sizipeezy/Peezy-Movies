@@ -3,6 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
     using PeezyMovies.Core.Contracts;
+    using PeezyMovies.Core.Exceptions;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
@@ -15,11 +16,13 @@
     {
         private readonly IRepository repo;
         private readonly ILogger logger;
+        private readonly IGuard guard;
 
-        public MovieService(IRepository _repo, ILogger<MovieService> logger)
+        public MovieService(IRepository _repo, ILogger<MovieService> logger, IGuard guard)
         {
             this.repo = _repo;
             this.logger = logger;
+            this.guard = guard;
         }
 
         public async Task AddMovieAsync(AddMovieViewModel model)
@@ -92,13 +95,16 @@
 
 
         public async Task<IEnumerable<Cinema>> GetCinemasAsync() => await repo.All<Cinema>().ToListAsync();
-        
+
         public async Task<IEnumerable<Genre>> GetGenresAsync() => await repo.All<Genre>().ToListAsync();
 
         public async Task<IEnumerable<Producer>> GetProducersAsync() => await repo.All<Producer>().ToListAsync();
 
         public async Task AddMovieToCollectionAsync(string userId, int movieId)
         {
+            guard.AgainstNull(userId, "User cannot be found");
+
+
             var user = await repo.All<User>()
                 .Where(x => x.Id == userId)
                 .Include(x => x.UsersMovies)
@@ -179,14 +185,16 @@
         {
             var testMovie = await this.repo.All<Movie>().FirstOrDefaultAsync(x => x.Id == movieId);
 
-           testMovie.ImageUrl = model.ImageUrl;
-           testMovie.Director = model.Director;
-           testMovie.Rating = model.Rating;
-           testMovie.CinemaId = model.CinemaId;
-           testMovie.GenreId = model.GenreId;
-           testMovie.ProducerId = model.ProducerId;
-           testMovie.Title = model.Title;
-           testMovie.Trailer = model.MovieTrailer;
+            guard.AgainstNull(testMovie, "Movie cannot be found");
+
+            testMovie.ImageUrl = model.ImageUrl;
+            testMovie.Director = model.Director;
+            testMovie.Rating = model.Rating;
+            testMovie.CinemaId = model.CinemaId;
+            testMovie.GenreId = model.GenreId;
+            testMovie.ProducerId = model.ProducerId;
+            testMovie.Title = model.Title;
+            testMovie.Trailer = model.MovieTrailer;
 
             await repo.SaveChangesAsync();
         }
@@ -201,12 +209,15 @@
                .Include(am => am.ActorsMovies).ThenInclude(a => a.Actor)
                .FirstOrDefaultAsync(n => n.Id == movieId);
 
+
+            guard.AgainstNull(movieDetails, "Movie cannot be found");
+
             return movieDetails;
         }
 
-        public async Task<ActorsViewModel> GetActorsDropDown() => 
+        public async Task<ActorsViewModel> GetActorsDropDown() =>
             new ActorsViewModel() { Actors = await repo.All<Actor>().OrderBy(x => x.Id).ToListAsync() };
-   
+
 
         public AllMoviesViewModel All(AllMoviesViewModel model)
         {
@@ -286,6 +297,9 @@
         {
             var movie = await this.repo.All<Movie>().Where(x => x.IsDeleted == false)
                 .FirstOrDefaultAsync(x => x.Id == id);
+
+
+            guard.AgainstNull(movie, "Movie cannot be found");
 
             movie.IsDeleted = true;
 

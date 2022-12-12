@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PeezyMovies
+﻿namespace PeezyMovies
 {
     public static class GlobalConstants
     {

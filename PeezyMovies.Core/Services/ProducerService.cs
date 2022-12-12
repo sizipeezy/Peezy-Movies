@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using PeezyMovies.Core.Contracts;
+    using PeezyMovies.Core.Exceptions;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
@@ -13,10 +14,11 @@
     public class ProducerService : IProducerService
     {
         private readonly IRepository repo;
-
-        public ProducerService(IRepository repo)
+        private readonly IGuard guard;
+        public ProducerService(IRepository repo, IGuard guard)
         {
             this.repo = repo;
+            this.guard = guard;
         }
 
         public async Task AddProducerAsync(AddProducerViewModel model)
@@ -45,6 +47,8 @@
 
         public AddProducerViewModel EditById(int producerId)
         {
+            guard.AgainstNull(producerId, "Producer cannot be found");
+
             return repo.All<Producer>()
                 .Where(x => x.Id == producerId)
                 .Select(x => new AddProducerViewModel
@@ -58,6 +62,8 @@
         public async Task EditProducerDetailAsync(AddProducerViewModel model, int producerId)
         {
             var producer = await repo.AllReadonly<Producer>().FirstOrDefaultAsync(x => x.Id == producerId);
+
+            guard.AgainstNull(producer, "Producer cannot be found");
 
             producer.FullName = model.FullName;
             producer.ImageUrl = model.ImageUrl;
@@ -96,6 +102,8 @@
                 Id = x.Id,
                 ImageUrl = x.ImageUrl,
             }).FirstOrDefaultAsync();
+
+            guard.AgainstNull(producer, "Producer cannot be found");
 
             return producer;
         }

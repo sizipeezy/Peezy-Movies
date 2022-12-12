@@ -3,6 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Logging;
     using PeezyMovies.Core.Contracts;
+    using PeezyMovies.Core.Exceptions;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
@@ -13,15 +14,19 @@
     {
         private readonly IRepository repo;
         private readonly ILogger logger;
+        private readonly IGuard guard;
 
-        public ActorService(IRepository repo, ILogger<ActorService> logger)
+        public ActorService(IRepository repo, ILogger<ActorService> logger, IGuard guard)
         {
             this.repo = repo;
             this.logger = logger;
+            this.guard = guard;
         }
 
         public Task<AddActorViewModel> ActorById(int actorId)
         {
+            guard.AgainstNull(actorId, "Actor cannot be found");
+
             return repo.All<Actor>()
                .Where(x => x.Id == actorId)
                .Select(x => new AddActorViewModel
@@ -63,6 +68,8 @@
                 repo.Delete(actor);
             }
 
+            guard.AgainstNull(actorId, "Actor cannot be found");
+
             await repo.SaveChangesAsync();
         }
 
@@ -95,6 +102,8 @@
 
         public Task<ActorViewModel> GetByIdAsync(int actorId)
         {
+            guard.AgainstNull(actorId, "Actor cannot be found");
+
             return repo.All<Actor>()
                 .Where(x => x.Id == actorId)
                 .Select(x => new ActorViewModel

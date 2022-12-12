@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using PeezyMovies.Core.Contracts;
+    using PeezyMovies.Core.Exceptions;
     using PeezyMovies.Core.Models;
     using PeezyMovies.Infrastructure.Data.Common;
     using PeezyMovies.Infrastructure.Data.Models;
@@ -13,10 +14,11 @@
     public class CinemaService : ICinemaService
     {
         private readonly IRepository repo;
-
-        public CinemaService(IRepository repo)
+        private readonly IGuard guard;
+        public CinemaService(IRepository repo, IGuard guard)
         {
             this.repo = repo;
+            this.guard = guard;
         }
 
         public async Task AddCinemaAsync(AddCinemaViewModel model)
@@ -36,7 +38,10 @@
         public async Task DeleteCinemaAsync(int cinemaId)
         {
             var cinema = await repo.All<Cinema>().FirstOrDefaultAsync(x => x.Id == cinemaId);
-            if( cinema != null)
+
+            guard.AgainstNull(cinema, "Cinema cannot be found");
+
+            if ( cinema != null)
             {
                 repo.Delete(cinema);
             }
@@ -60,9 +65,11 @@
             return cinemas;
         }
 
-        public AddCinemaViewModel GetById(int movieId)
+        public AddCinemaViewModel GetById(int cinemaId)
         {
-            return repo.All<Cinema>().Where(x => x.Id == movieId)
+            guard.AgainstNull(cinemaId, "Cinema cannot be found");
+
+            return repo.All<Cinema>().Where(x => x.Id == cinemaId)
               .Select(x => new AddCinemaViewModel
               {
                   Id = x.Id,
@@ -74,6 +81,9 @@
 
         public Task<CinemaViewModel> GetByIdAsync(int cinemaId)
         {
+
+            guard.AgainstNull(cinemaId, "Cinema cannot be found");
+
             return repo.All<Cinema>().Select(x => new CinemaViewModel
             {
                 Id = x.Id,
@@ -85,6 +95,8 @@
 
         public async Task UpdateCinemaAsync(AddCinemaViewModel model, int cinemaId)
         {
+            guard.AgainstNull(cinemaId, "Cinema cannot be found");
+
             var cinema = await repo.All<Cinema>().FirstOrDefaultAsync(x => x.Id == cinemaId);
 
             cinema.Description = model.Description;
