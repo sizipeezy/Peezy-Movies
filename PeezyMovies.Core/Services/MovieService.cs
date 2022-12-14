@@ -210,7 +210,7 @@
                .FirstOrDefaultAsync(n => n.Id == movieId);
 
 
-            guard.AgainstNull(movieDetails, "Movie cannot be found");
+            guard.AgainstNull(movieId, "Movie cannot be found");
 
             return movieDetails;
         }
