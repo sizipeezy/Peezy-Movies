@@ -13,6 +13,8 @@ using PeezyMovies.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+
 builder.Services
     .AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -55,7 +57,8 @@ builder.Services
 builder.Services.AddControllersWithViews(options =>
 {
     options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-}).AddMvcOptions(options =>
+})
+    .AddMvcOptions(options =>
 {
     options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
 });
@@ -63,6 +66,7 @@ builder.Services.AddControllersWithViews(options =>
 
 builder.Services.AddAplicationServices();
 builder.Services.AddSignalR();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
