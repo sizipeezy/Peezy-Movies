@@ -13,14 +13,17 @@ ASP.NET MVC WEB APP
 * HtmlSanitizer
 * JavaScript
 * AJAX real-time Requests
-* jQuery and any kind of jQuery plugins (bootstrap-select)
+* jQuery plugins (bootstrap-select)
 * Facebook for developers
 * YouTube
 * xUnit
 * ASP.NET Identity
 * Google maps for developers
+* CORS
 
-📝 Project Description EN
+# 📝 Project Description EN
+
+
 The web application provides modern project for work. The application combines a lot of functionality which can be useful for all types of users. In the navbar there is easy menu: “Top Movies Worldwide”, “Movies”, “Contacts” "About", "Dropdown" – with a dropping menu, “Actors”, “Producers”, "Cinemas". Tight to this navbar there is a search bar which can find the requested information from the user using searching in the whole system. On the right side in the section there is also the User's typically buttons where guests can register and logIn. There is also an option for login with external login provider(facebook) to the system, in the future there will be more external providers. Now let’s continue with a brief description for each of the pages when a guests register a user.
 
 Description of the “Home” page: In an interactive slider there is a visualization of last three movies from the whole database. Each of the movies in this slider contains mini button for which send the users to the movie's trailer. The Action uses InMemoryCache to get the cache for the movies in period of 15 minutes.
@@ -55,3 +58,9 @@ Description of the user profile: For the user profile there is a standard functi
 Additional functionalities:  There is also Facebook login which can be used instead of standard registration.
 
 In conclusion: Peezy Movies is a mini-movies project which combines in one place convenient user interface, chance to look for movies, news for them and details.In future there is a plan for developing a real system for ticket payment which is almost ready and form for movie reviews also reservation of tickets in real time. The purpose of the system is to be similar to IMDB.
+
+
+# Database 
+
+
+![image](https://user-images.githubusercontent.com/96740451/207843664-06d0fa85-73e8-4b15-be54-0aaad469b3bf.png)
