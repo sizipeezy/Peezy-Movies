@@ -45,11 +45,6 @@ Description of the “Watched” page: The page is the Watchlist where users add
 Description of the “Chat” page: The page is a globally chat where users can chat and use their nicknames.
 
 
-
-Description of the “News” page: In the online system there is an integration of a system for news, so the user can receive interesting and various information for movies. Each news shows total count of views, whose the writer is (administrator, moderator, editor) and at what day and time is written. For ease of use there is a visualization of six news. Right to the sidebar are visualized only updated news and a tiny label with caption “new” stays for 12 hours after the update. In this sidebar are also the most viewed top news.
-
-Description of the “Schedule” page: In this page you can find a schedule of movies and again there is a paging which shows only five projections per page. For convenience you can filter projections by cinemas. Each projection contains in detail a description of the movie like director, rating as well as a button for booking a seat in the hall. The user can choose a seat in the hall and request what type of ticket wants. Each ticket initially costs 10$. In the right sidebar there is a section with movie reviews, which is under development.
-
 Description of administrator panel: Like other systems here there is an administrator panel where the admin can add, delete, edit information about the system. In section “User’s Administration” for ease of use the administrator can see all the user's info and delete/update/add movies.
 There is a "Add Movie" part in the navbar when administrator log in where he can add movies, also he can delete/ban users to prevent login in the site.
 
