@@ -63,4 +63,4 @@ In conclusion: Peezy Movies is a mini-movies project which combines in one place
 # Database 
 
 
-![image](https://user-images.githubusercontent.com/96740451/207843664-06d0fa85-73e8-4b15-be54-0aaad469b3bf.png)
+![image](https://user-images.githubusercontent.com/96740451/207843980-fd22bacc-162d-4378-9032-2cd86e9cdd44.png)
