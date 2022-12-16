@@ -232,7 +232,7 @@
             {
                 MovieSorting.Price => query.OrderByDescending(c => c.Price),
                 MovieSorting.Genre => query.OrderBy(c => c.Genre.Name),
-                MovieSorting.Rating or _ => query.OrderByDescending(c => c.Id)
+                MovieSorting.Rating or _ => query.OrderByDescending(c => c.Rating)
             };
 
             var movies = query
@@ -270,12 +270,11 @@
             };
         }
 
-        public IEnumerable<string> GenresNamesAsStrings()
-        {
-            return repo.All<Genre>().Select(x => x.Name)
-                .Distinct()
-                .ToList();
-        }
+        public IEnumerable<string> GenresNamesAsStrings() => repo.All<Genre>()
+               .Select(x => x.Name)
+               .Distinct()
+               .ToList();
+
 
         public async Task<bool> Exists(int id) =>
             await repo.AllReadonly<Movie>().Where(x => x.IsDeleted == false).AnyAsync(x => x.Id == id);
