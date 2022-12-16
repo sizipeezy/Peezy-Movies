@@ -46,7 +46,7 @@
 
 
         [Test]
-        public async Task MovieForViewReturnsMovieViewModel()
+        public void MovieForViewReturnsMovieViewModel()
         {
             var repo = new Repository(applicationDbContext);
             movieService = new MovieService(repo, logger, guard);
@@ -150,7 +150,7 @@
         }
 
         [Test]
-        public async Task AddMovieAsyncShouldFail()
+        public void AddMovieAsyncShouldFail()
         {
             var repo = new Repository(applicationDbContext);
             movieService = new MovieService(repo, logger, guard);

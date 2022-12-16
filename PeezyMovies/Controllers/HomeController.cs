@@ -1,5 +1,6 @@
 ﻿namespace PeezyMovies.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Caching.Memory;
     using PeezyMovies.Core.Contracts;
@@ -7,6 +8,8 @@
     using PeezyMovies.Models;
     using System.Diagnostics;
 
+
+    [Authorize(Roles = WebAppDataConstants.Admin)]
     public class HomeController : Controller
     {
         private readonly IHomeService homeService;
@@ -19,9 +22,10 @@
             this.cache = cache;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-            if(this.User.IsInRole(WebAppDataConstants.Admin))
+            if (this.User.IsInRole(WebAppDataConstants.Admin))
             {
                 return this.RedirectToAction("All", "Movies", new { area = "Admin" });
             }
@@ -30,7 +34,7 @@
 
             var latest = this.cache.Get<IEnumerable<MovieViewModel>>(latestMoviesCache);
 
-            if(latest == null)
+            if (latest == null)
             {
                 latest = await this.homeService.GetLastThreeAsync();
 
@@ -44,10 +48,12 @@
 
         }
 
-       public IActionResult Chat() => this.View();
+        [AllowAnonymous]
+        public IActionResult Chat() => this.View();
 
-       public IActionResult NotFound(int statusCode)
-       {
+        [AllowAnonymous]
+        public IActionResult NotFound(int statusCode)
+        {
             var viewModel = new HttpErrorViewModel
             {
                 StatusCode = statusCode,
