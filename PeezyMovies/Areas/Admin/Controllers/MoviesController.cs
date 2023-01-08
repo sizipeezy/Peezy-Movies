@@ -70,7 +70,7 @@
 
             TempData[MessageConstants.SuccessMessage] = "You have successfully edite a movie!";
 
-            return this.Redirect(nameof(All));
+            return this.RedirectToAction(nameof(All));
         }
 
         public async Task<IActionResult> Details(int id)

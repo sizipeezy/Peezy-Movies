@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PeezyMovies.Core.Models
+﻿namespace PeezyMovies.Core.Models
 {
-    public class MovieViewModel
+    using PeezyMovies.Core.Models.ExtensionModel;
+
+
+    public class MovieViewModel : IMovieModel
     {
         public int Id { get; set; }
         public string? Title { get; set; }

@@ -10,7 +10,7 @@
         private readonly IAboutService aboutService;
 
         public AboutController(IAboutService aboutService)
-        {
+        { 
             this.aboutService = aboutService;
         }
 
