@@ -7,12 +7,12 @@
 
     public class ShoppingCart
     {
-        public ApplicationDbContext context { get; set; }
-
         public ShoppingCart(ApplicationDbContext context)
         {
             this.context = context;
         }
+
+        public ApplicationDbContext context { get; set; }
         public string ShoppingCartId { get; set; }
         public List<Item> Items { get; set; }
 
@@ -30,15 +30,15 @@
             };
         }
 
-        public List<Item> GetShoppingCartItems()
-        {
-            return Items ??= context.Items
+        public List<Item> GetShoppingCartItems() => 
+                 Items ??= context.Items
                 .Where(n => n.ShoppingCartId == ShoppingCartId)
                 .Include(n => n.Movie)
                 .ToList();
-        }
+        
 
-        public double GetCartTotal() => (double)context.Items
+        public double GetCartTotal() => 
+            (double)context.Items
             .Where(n => n.ShoppingCartId == ShoppingCartId)
             .Select(n => n.Movie.Price * n.Quantity)
             .Sum();

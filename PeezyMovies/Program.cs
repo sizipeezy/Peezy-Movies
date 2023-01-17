@@ -1,15 +1,11 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+using PeezyMovies.Hubs;
 using PeezyMovies.Infrastructure.Data;
-using PeezyMovies.Infrastructure.Data.Cart;
+using PeezyMovies.Infrastructure.Data.Configuration;
 using PeezyMovies.Infrastructure.Data.Models;
 using PeezyMovies.ModelBinders;
-using Microsoft.AspNetCore.Http;
-using PeezyMovies.Infrastructure.Data.Configuration;
-using Microsoft.AspNetCore.Mvc;
-using PeezyMovies.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -68,6 +64,7 @@ builder.Services.AddAplicationServices();
 builder.Services.AddSignalR();
 builder.Services.AddCors();
 
+
 var app = builder.Build();
 
 AdminConfiguration.SeedAdmin(app);
@@ -87,6 +84,8 @@ app.UseStatusCodePagesWithRedirects("/Home/NotFound?statusCode={0}")
     .UseStaticFiles()
     .UseRouting()
     .UseSession();
+
+app.UseCors();
 
 app.UseAuthentication()
    .UseAuthorization();
